@@ -1,0 +1,29 @@
+/*carousel image resizing*/
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    background-color: white;
+}
+
+.container-fluid {
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto
+ }
+
+.carousel-inner{
+    height: 150px;
+}
+
+.item, img{
+    height: 100% !important;
+    width:  100% !important;
+    /* border: 1px solid red; */
+}
+
+.ul-lst-grp-item:hover {
+    background-color: #EEF9FA;
+}
