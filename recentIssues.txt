@@ -4,8 +4,9 @@ cloned this one.
 
 So it appears now to updated things:
 I add/commit locally.
-Go to github repo Somehow locate the new commit
-and create a pull request
+Go to github repo Somehow 
+Pull Requests > New Request
+and create a pull request  
 Then merge
 
 This clone is on the Home directory
