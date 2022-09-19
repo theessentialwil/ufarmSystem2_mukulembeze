@@ -1,6 +1,7 @@
 /*carousel image resizing*/
 * {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
 }
 
 body {
@@ -26,4 +27,67 @@ body {
 
 .ul-lst-grp-item:hover {
     background-color: #EEF9FA;
+}
+
+.mycardimensions {
+    width: 11.3rem;
+    margin: 10px;
+}
+
+.card-title {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.card-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:0.8rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.my-btn-primary {
+    color: #fff;
+    background-color: #5fb95e;
+    border: none;
+    width: 8rem;
+  }
+  
+.my-btn:hover {
+    background-color: darkgreen;
+}
+
+  .card {
+    float:left;
+  }
+
+.my-footer {
+    height:80px;
+    background-color: rgb(2, 2, 58);
+    color:grey;
+}
+
+.center-div {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+/* table cells right padding*/
+.table1-cell {
+    border-right:1px solid darkslategrey;
+    padding-right: 2rem;
+}
+
+/*table cells left padding*/
+.table2-cell {
+    padding-left: 2rem;
+}
+footer a {
+    color:gray;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
 }
