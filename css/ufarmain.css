@@ -6,6 +6,7 @@
 
 body {
     background-color: white;
+    background-image: url("/images/dbg1.webp");
 }
 
 .container-fluid {
@@ -90,4 +91,78 @@ footer a {
 
 footer a:hover {
     color: white;
+}
+
+.modal-header {
+    background-color: rgb(4, 6, 59);
+    color:white;
+}
+
+.agricofficerinput {
+    width: 300px;
+    height: 30px;
+    background-color: rgba(233, 229, 229, 0.814);
+    border:0;
+    align-items:center;
+    margin-left: auto;
+    margin-right:auto;
+}
+.modal-body {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    margin-left: auto;
+    margin-right:auto;
+}
+.agricofficerinput:focus {
+    outline:none;
+    background-color: white;
+}
+
+#frm-btn-ao {
+    background-color: #5fb95e;
+    color: white;
+    width: 50%;
+    height: 30px;
+    border: 0;
+    border-radius: 0 10px 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    text-align: center;
+}
+
+.select-drpdwn {
+    width: 300px;
+    height: 30px;
+    background-color: rgba(233, 229, 229, 0.814);
+    text-align: left;
+    outline: none;
+    border: 0;
+}
+
+.textarea1 {
+    width: 300px;
+    outline: none;
+    background-color: rgba(233, 229, 229, 0.814);
+
+}
+
+#frm-btn-ao:hover {
+    background-color: rgb(4, 6, 59);
+}
+
+.modal-footer {
+    font-size: 10px;
+    display:block;
+    text-align: center;
+}
+
+.regfrmborder {
+    margin-top: 20px;
+    border: 1 solid rgb(92, 90, 90);
+    box-shadow: 10px 20px 20px 10px slategrey;
+    border-radius: 0 20px 0 20px;
 }

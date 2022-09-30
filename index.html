@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <header>
+  <header>
         <!--using Dark variant carousel with captions here source: https://getbootstrap.com/docs/5.2/components/carousel/--> 
 
         <div class="container-fluid">
@@ -31,16 +31,16 @@
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                       </li>
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Sign In</a>
-                      </li>
+                      </li> -->
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Sign In
                           </a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">AO</a></li>
-                            <li><a class="dropdown-item" href="#">FO</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">AO</a></li>          <!--The bootstrap modal id selector is what needs renaming in every other instance of the modal where you need many instances as in our case here-->
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal2">FO</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">UF</a></li>
                             <li><a class="dropdown-item" href="#">User</a></li>
@@ -119,10 +119,69 @@
             </div>
           </div>
         </div>
- 
-    </header>
+    <!--Modal for Agric officer sign in start-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">AO Sign In</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form id="agric-officer-singin">
+        <label for="aouserid" name="aouserid">User ID: &nbsp; &nbsp; &nbsp;</label><br>
+        <input type="email" class="agricofficerinput" name="aouserid" placeholder="Enter Email">
+        <br><br>
+        <label for="agric-officer-pwd" name="agric-officer-pwd">Password: &nbsp;</label><br>
+        <input type="password" class="agricofficerinput" name="agric-officer-pwd">
+        <hr>
+        <input type="submit" id="frm-btn-ao" name="submit" value="Sign in">
+      </form>
+    </div>
+    <div class="modal-footer">
+        &copy Ufarm Masajja Agro Culture Limited
+    </div>
+  </div>
+  </div>
+  </div>
+  <!--End of Modal for Agricultural Officer sign-->
+  
+  <!--Modal for Farmer One sign in start----------------------------->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--The bootstrap modal id selector is what needs renaming in every other instance of the modal where you need many instances as in our case here-->
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">FO Sign In</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form id="agric-officer-singin">
+        <label for="aouserid" name="aouserid">User ID: </label><br>
+        <input type="email" class="agricofficerinput" name="aouserid" placeholder="Enter Your Unique FO Number">
+        <br><br>
+        <label for="agric-officer-pwd" name="agric-officer-pwd">Password: </label><br>
+        <input type="password" class="agricofficerinput" name="agric-officer-pwd">
+        <hr>
+        <input type="submit" id="frm-btn-ao" name="submit" value="Sign in">
+        <br>
+        <!--Below is how we connect modal to the link-->
+        <p style="text-align:center"><a href="fo-sign-up.html">Create Your Account</a></p>
+  
+      </form>
+    </div>
+    <div class="modal-footer">
+        &copy Ufarm Masajja Agro Culture Limited
+    </div>
+  </div>
+  </div>
+  </div>
+  <!--End of Modal for Farmer One sign----------------------------------->
+  
+  
+  </header>
     
-    <main>
+  <main>
       <div class="container">
         <div class="row">
           <div class="col-md-4" style="background-color:lightyellow">
@@ -214,15 +273,13 @@
                 <a href="#" class="btn btn-primary my-btn-primary my-btn">Order</a>
               </div>
             </div>
-
-
-
+            
           </div>
       </div>
       </div>
       <br>
-      
- 
+
+
     </main>
 
     <footer>
