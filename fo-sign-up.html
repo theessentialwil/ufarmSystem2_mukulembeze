@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome FO. Please Create Your Official Account</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/ufarmain.css">
+<script src="https://kit.fontawesome.com/1bfd8a1bfc.js" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <header>
+              <!--using Dark variant carousel with captions here source: https://getbootstrap.com/docs/5.2/components/carousel/--> 
+
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col">
+                    <nav class="navbar navbar-expand-lg bg-light">
+                      <div class="container-fluid">
+                        <a class="navbar-brand" href="index.html"><img src="/images/logo.png"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row regfrmborder">
+                <div class="col-md-12">                    
+                  <form id="agric-officer-singin">
+                    <h3>FO New Account</h3>
+                  <p>Create Your Account Here Using the Unique FO No. obtained from the AO</p>
+                  <hr>
+                  </div>
+                      
+                <div class="col-md-4"><label for="fouserid">User ID: </label><br>
+                  <input type="text" class="agricofficerinput" id="fouserid" name="fouserid" placeholder="Enter username" required><br><br>
+
+                  <label for="fo-ward">Ward: </label><br>
+                  <select id="fo-ward" class="select-drpdwn" name="ward">
+                    <option value="Masajja-1">Masajja 1</option>
+                    <option value="Masajja-2">Masajja 2</option>
+                    <option value="Masajja-3">Masajja 3</option>
+                    <option value="Masajja-4">Masajja 4</option>
+                  </select><br><br>
+
+                  <label for="duration">Number of Years as Resident in Masajja: </label><br>
+                  <input type="number" class="agricofficerinput" id="duration" name="duration" placeholder="Enter number of years" required><br><br>
+
+                  <label for="fo-fname">First Name: </label><br>
+                  <input type="text" class="agricofficerinput" id="for-fname" name="fone-surname" required><br><br>
+
+                  <label for="fo-lname">Last Name:</label><br>
+                  <input type="text" class="agricofficerinput" id="fo-lname" required><br><br>
+                </div>
+
+                <div class="col-md-4"><lable for="sex">Sex:</lable><br>
+                  <input 
+                  type="radio" 
+                  id="sex" 
+                  name="sex" 
+                  value="Male" 
+                  required>
+                  
+                  <label for="gender-male">Male</label> &nbsp; &nbsp;
+                  <input type="radio" id="sex" name="sex" value="Female" required>
+                  <label for="gender-female">Female</label><br><br>
+                        
+                  <label for="dobirth">Date of Birth:</label><br>
+                  <input type="date" class="agricofficerinput" id="dobirth" required><br><br>
+
+                  <label for="nin">NIN:</label><br>
+                  <input type="text" class="agricofficerinput" id="nin" name="NIN" required><br><br>
+
+                  <label for="phoneno">📞Phone Number:</label><br>
+                  <input type="tel" class="agricofficerinput" id="phoneno" pattern="[+]{1}[0-9]{3}-[0-9]{3}-[0-9]{6}"placeholder="+256-000-000000" required><br><br>
+                
+                  <label for="activities">Farmer Activities: </label><br>
+                  <select id="activities" class="select-drpdwn" name="activities">
+                    <option value="Diary">🐄Dairy</option>
+                    <option value="Horticulture">🍏Horticulture</option>
+                    <option value="Poultry">🐔Poultry</option>
+                  </select><br><br>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="residencetype">Residence Type:</label><br>
+                    <select id="residencetype" class="select-drpdwn" name="residencetype">
+                      <option value="singlefamilydetached">Single Family Detached Home</option>
+                      <option value="singlefamilysemidetached">Single Family Semi-Detached Home</option>
+                      <option value="townhome">Townhome</option>
+                      <option value="multifamily">Multi-family Residential - Condominiums</option>
+                    </select><br><br>
+
+                    <label for="homedirections">Directions to Residence:</label><br>
+                    <textarea id="homedirections" class="textarea1" name="homedirections" rows="4" cols="41" placeholder="Type directions here!"></textarea><br><br>
+
+                    <label for="frmDate">Date of Registration:</label><br>
+                    <input type="text" name="frmDateReg" required id="frmDate" value="" readonly><br><br>
+
+                    <label for="farmer-one-pwd">Password: </label><br>
+                    <input type="password" class="agricofficerinput" name="farmer-one-pwd" placeholder="Enter Your Unique FO Number" required><br><br>
+                </div>
+
+                <div class="col-md-12">
+                  <hr>
+                    <input type="submit" id="frm-btn-ao" name="submit" value="Sign up      📝">
+                    <br>
+                </div>
+                        
+                    </form>
+                <!-- </div> -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="date.js"></script>
+ </html>
