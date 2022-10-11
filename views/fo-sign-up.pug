@@ -31,12 +31,12 @@ html(lang='en')
           .col-md-12
             form#agric-officer-singin(action='/signup' name='fosignup' method="POST" onsubmit='checkFilled(); checkWard(); checkTimeInWard(); checksurName(); checklastName(); checkDate(); checkNin(); checkPhone(); checkActivity(); checkHomeType(); checkDirections(); checkpassWord()')
               h3 FO New Account
-              p Create Your Account Here Using the Unique FO No. obtained from the AO
+              p Create Your Account Here.
               hr
           .col-md-4
-            label(for='fouserid') User ID: 
+            label(for='fouserid') User ID (Email): 
             br
-            input#fouserid.agricofficerinput(type='text', name='fouserid', placeholder='Enter username', onblur='checkFilled(); turnRegDate()')
+            input#fouserid.agricofficerinput(type='email', name='fouserid', placeholder='Enter Email', onblur='checkFilled(); turnRegDate()')
             br
             br
             label(for='fo-ward') Ward: 
@@ -121,7 +121,7 @@ html(lang='en')
             br
             label(for='farmer-one-pwd') Password: 
             br
-            input.agricofficerinput(type='password', name='fopwd', placeholder='Enter Your Unique FO Number', onblur='checkpassWord()')
+            input.agricofficerinput(type='password', name='fopwd', onblur='checkpassWord()')
             br
             br
           .col-md-12
