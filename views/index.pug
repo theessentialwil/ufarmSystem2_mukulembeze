@@ -1,0 +1,241 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Welcome to UFarm
+    //- CSS only
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx', crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/ufarmain.css')
+    script(src='https://kit.fontawesome.com/1bfd8a1bfc.js', crossorigin='anonymous')
+  body
+    header
+      //- using Dark variant carousel with captions here source: https://getbootstrap.com/docs/5.2/components/carousel/
+      .container-fluid
+        .row
+          .col
+            nav.navbar.navbar-expand-lg.bg-light
+              .container-fluid
+                a.navbar-brand(href='index.html')
+                  img(src='/images/logo.png')
+                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                  span.navbar-toggler-icon
+                #navbarSupportedContent.collapse.navbar-collapse
+                  ul.navbar-nav.me-auto.mb-2.mb-lg-0
+                    li.nav-item
+                      a.nav-link.active(aria-current='page', href='#') Home
+                    //-
+                      <li class="nav-item">
+                      <a class="nav-link" href="#">Sign In</a>
+                      </li>
+                    li.nav-item.dropdown
+                      a.nav-link.dropdown-toggle(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
+                        | Sign In
+                      ul.dropdown-menu
+                        li
+                          a.dropdown-item(data-bs-toggle='modal', data-bs-target='#exampleModal') AO
+                        //- The bootstrap modal id selector is what needs renaming in every other instance of the modal where you need many instances as in our case here
+                        li
+                          a.dropdown-item(data-bs-toggle='modal', data-bs-target='#exampleModal2') FO
+                        li
+                          hr.dropdown-divider
+                        li
+                          a.dropdown-item(href='#') UF
+                        li
+                          a.dropdown-item(href='#') User
+                    li.nav-item
+                      a.nav-link
+                        i.fa-solid.fa-cart-shopping
+                        | cart
+                  form.d-flex(role='search')
+                    input.form-control.me-2(type='search', placeholder='Search', aria-label='Search')
+                    button.btn.btn-outline-success(type='submit') Search
+      .container-fluid
+        .row
+          .col
+            #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride='carousel')
+              .carousel-indicators
+                button.active(type='button', data-bs-target='#carouselExampleDark', data-bs-slide-to='0', aria-current='true', aria-label='Slide 1')
+                button(type='button', data-bs-target='#carouselExampleDark', data-bs-slide-to='1', aria-label='Slide 2')
+                button(type='button', data-bs-target='#carouselExampleDark', data-bs-slide-to='2', aria-label='Slide 3')
+              .carousel-inner
+                .carousel-item.active(data-bs-interval='10000')
+                  img.d-block.w-100.carousel_image.img-fluid(src='/images/carou_3.png', style='height:150px; width:100%', alt='...')
+                  .carousel-caption.d-none.d-md-block
+                    //- <h5>representative placeholder content for the first slide.</p>
+                .carousel-item(data-bs-interval='2000')
+                  //- carousel height is adjusted by resizing the images for height
+                  img.d-block.w-100.carousel_image.img-fluid(src='/images/carou_2.png', style='height:150px; width:100%', alt='...')
+                  .carousel-caption.d-none.d-md-block
+                    //-
+                      <h5>Second slide label</h5>
+                      <p>Some representative placeholder content for the second slide.</p>
+                .carousel-item
+                  img.d-block.w-100.carousel_image.img-fluid(src='/images/carou_3.png', style='height:150px; width:100%', alt='...')
+                  .carousel-caption.d-none.d-md-block
+                    //-
+                      <h5>Third slide label</h5>
+                      <p>Some representative placeholder content for the third slide.</p>
+              button.carousel-control-prev(type='button', data-bs-target='#carouselExampleDark', data-bs-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.visually-hidden Previous
+              button.carousel-control-next(type='button', data-bs-target='#carouselExampleDark', data-bs-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.visually-hidden Next
+      .container
+        .row
+          .col
+            nav(style="--bs-breadcrumb-divider: '>';", aria-label='breadcrumb')
+              ol.breadcrumb
+                li.breadcrumb-item
+                  a(href='#') Home
+                li.breadcrumb-item.active(aria-current='page') Library
+      //- Modal for Agric officer sign in start
+      #exampleModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h5#exampleModalLabel.modal-title AO Sign In
+              button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+            .modal-body
+              form#agric-officer-singin
+                label(for='aouserid', name='aouserid') User ID: &nbsp; &nbsp; &nbsp;
+                br
+                input.agricofficerinput(type='email', name='aouserid', placeholder='Enter Email')
+                br
+                br
+                label(for='agric-officer-pwd', name='agric-officer-pwd') Password: &nbsp;
+                br
+                input.agricofficerinput(type='password', name='agric-officer-pwd')
+                hr
+                input#frm-btn-ao(type='submit', name='submit', value='Sign in')
+            .modal-footer
+              | &copy; Ufarm Masajja Agro Culture Limited
+      //- End of Modal for Agricultural Officer sign
+      //- Modal for Farmer One sign in start---------------------------
+      #exampleModal2.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        // The bootstrap modal id selector is what needs renaming in every other instance of the modal where you need many instances as in our case here
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h5#exampleModalLabel.modal-title FO Sign In
+              button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+            .modal-body
+              form#agric-officer-singin
+                label(for='aouserid', name='aouserid') User ID: 
+                br
+                input.agricofficerinput(type='email', name='aouserid', placeholder='Enter Your Unique FO Number')
+                br
+                br
+                label(for='agric-officer-pwd', name='agric-officer-pwd') Password: 
+                br
+                input.agricofficerinput(type='password', name='agric-officer-pwd')
+                hr
+                input#frm-btn-ao(type='submit', name='submit', value='Sign in')
+                br
+                // Below is how we connect modal to the link
+                p(style='text-align:center')
+                  a(href='fo-sign-up.html') Create Your Account
+            .modal-footer
+              | &copy; Ufarm Masajja Agro Culture Limited
+      //- End of Modal for Farmer One sign---------------------------------
+    main
+      .container
+        .row
+          .col-md-4(style='background-color:lightyellow')
+            ul.list-group
+              li.list-group-item.active(aria-current='true') Shop By Category
+              li.list-group-item.ul-lst-grp-item Fruits
+              li.list-group-item.ul-lst-grp-item Vegetables
+              li.list-group-item.ul-lst-grp-item Poultry
+              li.list-group-item.ul-lst-grp-item Dairy
+            br
+            hr
+            br
+            ul.list-group
+              li.list-group-item.active(aria-current='true') Shop By Supplier
+              li.list-group-item.ul-lst-grp-item Amy Vegs
+              li.list-group-item.ul-lst-grp-item Baatandika Ndaba AgriGroup
+              li.list-group-item.ul-lst-grp-item Gulu HortiCoop
+              li.list-group-item.ul-lst-grp-item Kamulali Enterprises
+              li.list-group-item.ul-lst-grp-item Kyosimba Onanya
+              li.list-group-item.ul-lst-grp-item Lungujja Agribiz
+              li.list-group-item.ul-lst-grp-item Massajja Tukolerwamu
+              li.list-group-item.ul-lst-grp-item Mboga Farmers
+              li.list-group-item.ul-lst-grp-item Nkoko Nkulu Farmers Cohort
+              li.list-group-item.ul-lst-grp-item Savannah Organic Supplies
+          .col-md-8(style='background-color:bisque')
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+            .card.mycardimensions
+              img.card-img-top(src='/images/butter.webp', alt='...')
+              .card-body
+                h6.card-title
+                  | Pasteurized Salted Butter
+                  p
+                  p.card-text Ugx 30,000
+                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
+      br
+    footer
+      .contaner-fluid.my-footer.center-div
+        .row
+          .col
+            table
+              tbody
+                tr
+                  td.table1-cell
+                    a(href='#') LogIn
+                  td.table1-cell.table2-cell
+                    a(href='#') Privacy Policy
+                  td.table1-cell.table2-cell
+                    a(href='#') Terms of Use
+                  td.table2-cell Copyright &copy; 2022 Ufarm Masajja Agro Culture Limited
+    //- JavaScript Bundle with Popper
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa', crossorigin='anonymous')
