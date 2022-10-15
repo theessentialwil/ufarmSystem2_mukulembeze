@@ -180,7 +180,16 @@ label {
     border-radius: 0 20px 0 20px;
     padding-left: 3rem;
 }
-
+.regfrmborderao {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1 solid rgb(92, 90, 90);
+    box-shadow: 10px 20px 20px 10px slategrey;
+    border-radius: 0 20px 0 20px;
+    padding-left: 3rem;
+    width: 750px;
+}
 #frmDate {
     width: 300px;
     background-color: rgba(233, 229, 229, 0.814);
@@ -193,4 +202,8 @@ label {
 
 #sex:hover {
     box-shadow: 3px 5px 5px 3px slategrey;
+}
+
+.frmelement {
+    margin-bottom: 1rem;
 }

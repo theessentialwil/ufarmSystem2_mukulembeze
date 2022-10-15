@@ -1,0 +1,40 @@
+extends layout
+block content
+	header.card-header
+		//- script(src="js/validations.js")
+		h4.card-title Register Agric Officer
+	form(action='/user/receive' id="regForm" name="register" method="POST")
+		div.form-row
+			div.col.form-group
+				label Full Name 
+				input.form-control#fname(name="fullname")
+			div.col.form-group
+				label Email
+				input.form-control#mail(name="email")
+			div.col.form-group
+				label Unique Number
+				input.form-control#uniquenumber(name="uniquenumber")
+		div.form-row
+			div.col.form-group
+				label.form-check.form-check-inline
+					input.form-check-input(type="radio" id="female" name="gender" value="female")
+					span.form-check-label Female 
+				label.form-check.form-check-inline
+					input.form-check-input#male(type="radio" name="gender" value="male")
+					span.form-check-label Male 
+			div.col.form-group
+				label Password
+				input.form-control(type="password" name="password" id="password")
+			div.col.form-group
+				label Role
+				select.form-control(name="role")
+					option(value="") (Select a role)
+					option(value="AgricOfficer") Agric Officer
+		div.form-row
+			div.col.form-group
+				button.btn.btn-primary.btn-block( id="submit") Register 
+		div.form-row
+			div.col.form-group
+				a(class='button' href='/login') Login
+block footer
+	div.col-md-12 ©️ 2022 Refactory Cohort 12, NodeJS by Irene.

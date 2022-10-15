@@ -1,0 +1,23 @@
+app.js file comments
+
+Line 5 // Importing Route files:
+    Every route in the routes folder has to be reported here in the server file as this is the engine of the application (or system). So notice that we <require> it because it was exported within it using the statement module.exports.
+
+COMMENT ON CODE ENTRY: 
+const registerRoutes = require('./routes/registerRoutes');
+
+  if we had not exported and then come and required the routes file or module here, at some point an error will be thrown so module.exports registerRoutes.js is essential. We've imported the routes by the above statement but how do we use them. Look for the section of routes and there insert app.use. These routes come in here and are looked at as middleware but we've designed them by ourselves.
+
+COMMENT ON CODE ENTRY:
+app.use('./', registerRoutes); 
+
+  The above entry means that e.g. if one is in your sys and wants to find a route that exists in the routes represented by the variable name registerRoutes which points to the registrations routes module registerRoutes.js they must go through the /user gate.
+
+
+registerRoutes.js file comments---------**
+
+LINE 2: COMMENT ON CODE ENTRY: const router = express.Router();
+  // this has the powers to enable us access the different methods POST, GET, PUT
+
+COMMENT ON CODE ENTRY: module.exports = router;
+ This exports the registerRoutes.js module. It must be exported for other files to access this module. For every individual route is looked at as a module. It has first to be xported for it to be available for us in another file. This exposes it to be used in another file. This has to be the last line in the routes' file else whatever is below will not be read.

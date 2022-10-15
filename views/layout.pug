@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+		//- link(rel='stylesheet' href='css/styles.css')
+		link(rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+		//- script(src="js/validations.js")
+		title Registration Form
+	body
+		.row.justify-content-center
+			div.col-md-6
+				div.card-body
+					block content
+	footer.row.justify-content-center
+		div.col-md-6
+			block footer
+
+
+
+
+//- The layout is the template. All pages are based on this layout
+//- This pulls out all code that will be repeated in every other page
+//- e.g. every file will have an html boiler-plate so pull it out and put it in a layout so that the other pages just extend the layout.
