@@ -1,0 +1,79 @@
+extends layout
+block content
+    form(action='/ufregister' name='urbanfarmersignup' method="POST")
+      h5 Urban Farmer New Account
+      .flex-container
+        .frmelement
+          label(for='role') Role
+          br
+          select#role.select-drpdwn(name='role')
+            option(value='notspecified') 
+            option(value='urbanfarmer') Urban Farmer
+        .frmelement
+          label(for='uniquenum') Unique Number:
+          br
+          input#uniquenum.agricofficerinput(type='text', name='uniquenum')
+        .frmelement
+          label(for='fouserid') User ID (Email): 
+          br
+          input#fouserid.agricofficerinput(type='email', name='userid', placeholder='Enter Email')
+        .frmelement
+          label(for='fo-ward') Ward: 
+          br
+          select#fo-ward.select-drpdwn(name='ward')
+            option(value='Masajja-1')
+            option(value='Masajja-1') Masajja 1
+            option(value='Masajja-2') Masajja 2
+            option(value='Masajja-3') Masajja 3
+            option(value='Masajja-4') Masajja 4
+        .frmelement
+          label(for='fo-fname') First Name: 
+          br
+          input#for-fname.agricofficerinput(type='text', name='firstname')
+        .frmelement
+          label(for='fo-lname') Last Name:
+          br
+          input#fo-lname.agricofficerinput(type='text', name='lastname')
+        .frmelement
+          label(for='dobirth') Date of Birth:
+          br
+          input#dobirth.agricofficerinput(type='date', name='dob')
+        .frmelement
+          lable(for='sex') Sex:
+          br
+          input#male(type='radio', name='sex', value='male')
+          label(for='gender-male') Male
+          |  &nbsp; &nbsp;
+          input#female(type='radio', name='sex', value='female')
+          label(for='gender-female') Female
+        .frmelement
+          label(for='activities') Farmer Activities: 
+          br
+          select#activities.select-drpdwn(name='activities')
+            option(value='')
+            option(value='Diary') &#x1F404;Dairy
+            option(value='Horticulture') &#x1F34F;Horticulture
+            option(value='Poultry') &#x1F414;Poultry
+        .frmelement
+          label(for='nin') NIN:
+          br
+          input#nin.agricofficerinput(type='text', name='nin', onblur='checkNin()')
+        .frmelement
+          //- Note that the js for inserting today's date will only work if type here is text not date
+          label(for='frmDate') Date of Registration:
+          br
+          input#frmDate(type='text', name='DateOfReg', value='', readonly='')
+        .frmelement
+          label(for='phoneno') &#x1F4DE;Phone Number:
+          br
+          input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno', onblur='checkPhone()')
+        .frmelement
+          label(for='password') Password: 
+          br
+          input#password.agricofficerinput(type='password', name='password', onblur='checkpassWord()')
+        .frmelement
+          input#frm-btn-ao(type='reset', value='Reset')
+          br
+        .frmelement
+          input#frm-btn-ao(type='submit', value='Sign up      📝')
+          br

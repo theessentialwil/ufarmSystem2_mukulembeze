@@ -6,12 +6,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  fosurname: {
+  uniquenum: {
+    type: String
+  },
+  firstname: {
     type: String,
     required: true,
     trim: true
   },
-  folname: {
+  lastname: {
     type: String,
     required: true,
     trim: true
@@ -30,9 +33,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  foDateReg: {
-    type: Date,
+  DateOfReg: {
+    type: String
   },
+  // email is utilized as the userid
   userid: {
     type: String,
     required: true
@@ -42,29 +46,23 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   ward: {
-    type: String,
-    required: true
+    type: String
   },
   duration: {
-    type: Number,
-    required: true
+    type: Number
   }, 
   dob: {
-    type: Date,
-    required: true
+    type: Date
   },
   activities: {
-    type: String,
-    required: true
+    type: String
   },
   residencetype: {
-    type: String,
-    required: true
+    type: String
   },
   homedirections: {
-    type: String,
-    required: true
-  },
+    type: String
+  }
 })
 
 userSchema.plugin(passportLocalMongoose, {

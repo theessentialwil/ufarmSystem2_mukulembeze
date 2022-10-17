@@ -5,11 +5,12 @@ const router = express.Router();
 const Registration = require('../models/User');
 // see comments.txt
 
-router.get("/register", (req, res) => {
+// farmer one registration/signup form
+router.get("/registerfo", (req, res) => {
   res.render('fo-sign-up');
 });
 
-router.post("/register", async (req, res) => {
+router.post("/registerfo", async (req, res) => {
   console.log(req.body);
   try {
     const user = new Registration(req.body);
@@ -17,7 +18,7 @@ router.post("/register", async (req, res) => {
       if (error) {
         throw error
       }
-      res.redirect('/register');
+      res.redirect('/index');
     });
   } catch (error) {
       res.status(400).send("Sorry we're updating system");
@@ -25,20 +26,46 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/regagricofficer", (req, res) => {
+// Agricultural Officer registration/signup form
+router.get("/registerao", (req, res) => {
   res.render('ao-sign-up');
 });
 
-router.post("/regagricofficer", (req, res) => {
+router.post("/registerao", async (req, res) => {
   console.log(req.body);
+  try {
+    const user = new Registration(req.body);
+    await Registration.register(user, req.body.password, (error) => {
+      if (error) {
+        throw error
+      }
+      res.redirect('/index');
+    });
+  } catch (error) {
+    res.status(400).send("Sorry we're updating system");
+    console.log(error);
+  }
 });
 
-router.get("/receive", (req, res) => {
-  res.render('registration');
+// Urban farmer registration/signup form
+router.get("/ufregister", (req, res) => {
+  res.render('uf-sign-up');
 });
 
-router.post("/receive", (req, res) => {
+router.post("/ufregister", async (req, res) => {
   console.log(req.body);
+  try {
+    const user = new Registration(req.body);
+    await Registration.register(user, req.body.password, (error) => {
+      if (error) {
+        throw error
+      }
+      res.redirect('/index');
+    });
+  } catch (error) {
+    res.status(400).send("Sorry we're updating system");
+    console.log(error);
+  }
 });
 
 module.exports = router; 
