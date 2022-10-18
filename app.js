@@ -10,10 +10,12 @@ const expressSession = require('express-session')({
   resave: false,
   saveUninitialized: false,
   }); 
-// Import the User Model or schema
+// Import the User Model or Schema 
 const Registration = require('./models/User');
+
 // Importing Route files: see comments.txt
 const registerRoutes = require('./routes/registerRoutes');
+const urbanfarmerRoutes = require('./routes/urbanfarmerRoutes');
 
 // INSTANTIATIONS----------------****** section in Anatomy of an Express Server
 const app = express();
@@ -51,6 +53,7 @@ passport.serializeUser(Registration.serializeUser());
 passport.deserializeUser(Registration.deserializeUser());
 // ROUTES---------------------------**** section in Anatomy of an Express Server
 app.use('/', registerRoutes); 
+app.use('/', urbanfarmerRoutes);
 
 
 app.get("*", (req, res) => {
