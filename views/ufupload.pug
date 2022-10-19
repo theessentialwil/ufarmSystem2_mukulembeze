@@ -62,8 +62,8 @@ html(lang='en')
           label(for='supplierid') Supplier ID (Email):
           br
           select#supplierid.agricofficerinput(name='supplierid')
-            each urbanfarmer in urbanfarmers
-              option(value=urbanfarmer._id) #{urbanfarmer.userid}
+            if currentUser
+              option(value=currentUser._id) #{currentUser.userid}
         .frmelement
           label(for='uniquenum') Unique Number:
           br
@@ -72,11 +72,8 @@ html(lang='en')
           label(for='fo-ward') Ward: 
           br
           select#fo-ward.select-drpdwn(name='ward')
-            option(value='Masajja-1')
-            option(value='Masajja-1') Masajja 1
-            option(value='Masajja-2') Masajja 2
-            option(value='Masajja-3') Masajja 3
-            option(value='Masajja-4') Masajja 4
+            if currentUser
+              option(value=currentUser._id) #{currentUser.ward}
         .frmelement
           label(for='pytmode') Payment Mode: 
           br
@@ -95,5 +92,5 @@ html(lang='en')
           input#frm-btn-ao(type='reset', value='Reset')
           br
         .frmelement
-          input#frm-btn-ao(type='submit', value='Sign up      📝')
+          input#frm-btn-ao(type='submit', value='Upload Product    📤')
           br

@@ -1,6 +1,7 @@
 const express= require('express');
 const router = express.Router(); 
 const multer = require('multer');
+const connectEnsureLogin = require('connect-ensure-login');
 // Importing the User Model or Schema
 const UrbanFarmerUpload = require('../models/Urbanfarmerupload');
 const Registration = require('../models/User');
@@ -21,12 +22,18 @@ var storage = multer.diskStorage({
   // instantiate variable upload to store multer functionality to upload image
   var upload = multer({ storage: storage }) 
 
-router.get("/ufarmerupload", async (req, res) => {
-  let urbanFarmerList = await Registration.find({role: 'urbanfarmer'});
-  res.render('ufupload', {urbanfarmers:urbanFarmerList});
+// Upload Product/Produce route
+// router.get("/ufarmerupload", async (req, res) => {
+//   let urbanFarmerList = await Registration.find({role: 'urbanfarmer'});
+//   res.render('ufupload', {urbanfarmers:urbanFarmerList});
+// });
+
+router.get("/ufarmerupload", connectEnsureLogin.ensureLoggedIn(), upload.single('productimage'), async (req, res) => {
+  
+  res.render('ufupload', {currentUser: req.session.user});
 });
 
-router.post("/ufarmerupload", upload.single('productimage'), async (req, res) => {
+router.post("/ufarmerupload", connectEnsureLogin.ensureLoggedIn(), upload.single('productimage'), async (req, res) => {
   console.log(req.body);
   try {
     const product = new UrbanFarmerUpload(req.body);
@@ -39,5 +46,21 @@ router.post("/ufarmerupload", upload.single('productimage'), async (req, res) =>
       console.log(error);
   }
 });
+
+// Urban Farmer Login route
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.post('/login', (req, res) => {
+
+});
+
+// Urban Farmer Member Area route
+router.get('/urbfarmermember', (req, res) => {
+  res.render('urbfarmermemberarea');
+});
+
+
 
 module.exports = router; 

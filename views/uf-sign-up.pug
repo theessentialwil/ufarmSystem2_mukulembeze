@@ -1,22 +1,28 @@
 extends layout
 block content
-    form(action='/ufregister' name='urbanfarmersignup' method="POST")
+    form(action='/ufregister' name='urbanfarmersignup' method="POST" onsubmit="return Validate();")
       h5 Urban Farmer New Account
       .flex-container
         .frmelement
           label(for='role') Role
           br
           select#role.select-drpdwn(name='role')
-            option(value='notspecified') 
+            option(value='notspecified') Select role 
             option(value='urbanfarmer') Urban Farmer
+          br
+          small#roleerr
         .frmelement
           label(for='uniquenum') Unique Number:
           br
           input#uniquenum.agricofficerinput(type='text', name='uniquenum')
+          br
+          small#uniquenumerr
         .frmelement
           label(for='fouserid') User ID (Email): 
           br
-          input#fouserid.agricofficerinput(type='email', name='userid', placeholder='Enter Email')
+          input#fouserid.agricofficerinput(type='email', name='email', placeholder='Enter Email')
+          br
+          small#useriderr
         .frmelement
           label(for='fo-ward') Ward: 
           br
@@ -26,14 +32,17 @@ block content
             option(value='Masajja-2') Masajja 2
             option(value='Masajja-3') Masajja 3
             option(value='Masajja-4') Masajja 4
+          small#warderr
         .frmelement
           label(for='fo-fname') First Name: 
           br
           input#for-fname.agricofficerinput(type='text', name='firstname')
+          small#firstnameerr
         .frmelement
           label(for='fo-lname') Last Name:
           br
           input#fo-lname.agricofficerinput(type='text', name='lastname')
+          small#lastnameerr
         .frmelement
           label(for='dobirth') Date of Birth:
           br
@@ -71,9 +80,12 @@ block content
           label(for='password') Password: 
           br
           input#password.agricofficerinput(type='password', name='password', onblur='checkpassWord()')
+          br
+          small#passworderr
         .frmelement
           input#frm-btn-ao(type='reset', value='Reset')
           br
         .frmelement
           input#frm-btn-ao(type='submit', value='Sign up      📝')
           br
+    script(src='/js/validateform.js')

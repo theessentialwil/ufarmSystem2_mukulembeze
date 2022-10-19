@@ -207,3 +207,17 @@ label {
 .frmelement {
     margin-bottom: 1rem;
 }
+
+.loginfrmdiv {
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    text-align: center;
+}
+
+.frmborder {
+    border: 5px solid green;
+}

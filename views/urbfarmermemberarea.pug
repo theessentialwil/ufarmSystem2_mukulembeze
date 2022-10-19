@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    | &#x9;&#x9;
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    | &#x9;&#x9;
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    | &#x9;&#x9;
+    title Document
+    // CSS only
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx', crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/ufarmain.css')
+  | &#x9;
+  body
+    form
+      h3.center-div Welcome to Your Urban Farmer Member Area
+      .container-fluid
+        .row
+          .col-sm-12.regfrmborderao
+            h4 "Sorry for the inconvenience. We're still working around the clock to populate this page." Uncle Pug.
+            p(style='text-align:center')
+              img(src='/images/unclepug.jpg', alt='funny image', style='height:100px')
+            form(method='POST' action='/urbfarmerlogout')
+              button.btn.btn-style(type='submit') Logout

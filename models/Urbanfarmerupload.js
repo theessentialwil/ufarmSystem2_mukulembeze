@@ -39,13 +39,20 @@ uniquenum: {
   required: true
 },
 ward: {
-  type: String
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Registration',
+  required: true
 },
 pytmode: {
   type: String
 },
 deliverymode: {
   type: String
+},
+status: {
+  type: String,
+  default: "Pending",
+  enum: ['Pending', 'Approved']
 }
 })
 

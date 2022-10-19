@@ -12,10 +12,12 @@ const expressSession = require('express-session')({
   }); 
 // Import the User Model or Schema 
 const Registration = require('./models/User');
+const UrbanFarmerUpload = require('./models/Urbanfarmerupload')
 
 // Importing Route files: see comments.txt
 const registerRoutes = require('./routes/registerRoutes');
 const urbanfarmerRoutes = require('./routes/urbanfarmerRoutes');
+const authenticateRoutes = require('./routes/authenticationroutes');
 
 // INSTANTIATIONS----------------****** section in Anatomy of an Express Server
 const app = express();
@@ -51,9 +53,11 @@ app.use(passport.session());
 passport.use(Registration.createStrategy());
 passport.serializeUser(Registration.serializeUser());
 passport.deserializeUser(Registration.deserializeUser());
+
 // ROUTES---------------------------**** section in Anatomy of an Express Server
 app.use('/', registerRoutes); 
 app.use('/', urbanfarmerRoutes);
+app.use('/', authenticateRoutes);
 
 
 app.get("*", (req, res) => {

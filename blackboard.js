@@ -18,3 +18,4 @@ function totalPriceOfPhonePurchase() {
 for (let i = 0; bankBalance > 0; i++  ) {
   if (bankBalance);
 }
+

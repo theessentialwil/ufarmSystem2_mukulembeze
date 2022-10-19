@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   // email is utilized as the userid
-  userid: {
+  email: {
     type: String,
     required: true
   },
@@ -66,6 +66,6 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.plugin(passportLocalMongoose, {
-  usernameField: 'userid'
+  usernameField: 'email'
 })
 module.exports = mongoose.model('Registration', userSchema);
