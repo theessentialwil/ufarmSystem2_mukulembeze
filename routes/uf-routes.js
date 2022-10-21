@@ -34,7 +34,7 @@ router.get("/ufarmerupload", connectEnsureLogin.ensureLoggedIn(), (req, res) => 
   res.render("ufupload", { currentUser: req.session.user });
 });
   
-router.post("/ufarmerupload", upload.single('productimage'), async (req, res) => {
+router.post("/ufarmerupload", connectEnsureLogin.ensureLoggedIn(), upload.single('productimage'), async (req, res) => {
   console.log(req.body);
   try {
     const product = new UrbanFarmerUpload(req.body);
@@ -48,10 +48,11 @@ router.post("/ufarmerupload", upload.single('productimage'), async (req, res) =>
   }
 });
 
-// Getting List of Produce From Database
+// Getting List of Produce From Database; The sort on line 55 is to get the most currently added product show up at the top.
 router.get('/productlist', async (req,res) => {
   try {
-    let products = await UrbanFarmerUpload.find();
+    // const order = {_id:-1}
+    let products = await UrbanFarmerUpload.find().sort({$natural:-1});
     res.render('productlist', {myproducts:products});
   } catch (error) {
     res.status(400).send("Sorry there are no products matching your request");
@@ -62,8 +63,8 @@ router.get('/productlist', async (req,res) => {
 // Update get and post Route
 router.get('/produce/update/:id', async (req,res) => {
   try {
-    const updateProduct = await produce.findOne({_id:req.params.id})
-    res.render('updateproduct', {products:updateProduct});
+    const updateProduct = await UrbanFarmerUpload.findOne({_id:req.params.id})
+    res.render('updateproduct', {product:updateProduct});
   } catch (error) {
     res.status(400).send('Sorry we seem unable to update the product');
   }
@@ -71,7 +72,7 @@ router.get('/produce/update/:id', async (req,res) => {
 
 router.post('/produce/update', async (req,res) => {
   try {
-    await produce.findOneAndUpdate({_id:req.query.id}, req.body);
+    await UrbanFarmerUpload.findOneAndUpdate({_id:req.query.id}, req.body);
     res.redirect('/productlist');
   } catch (error) {
     res.status(400).send('Sorry we were unable to update product');
@@ -79,9 +80,25 @@ router.post('/produce/update', async (req,res) => {
 });
 
 // Urban farmer dashboard route
-router.get('/uf-dash', (req, res) => {
-  res.render('dash-uf');
-})
+router.get('/uf-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+  req.session.user = req.user;
+  if (req.user.role == 'agriculturaofficer') {
+    res.render('dash-uf');
+  } else {
+    res.send('This page is only accessible by Urban farmer');
+  }
+});
+
+
+// Delete Product
+router.post('/produce/delete', async (req,res) => {
+  try {
+    await UrbanFarmerUpload.deleteOne({_id:req.body.id});
+    res.redirect('back');
+  } catch (error) {
+    res.status(400).send('Sorry product could not be deleted');
+  }
+});
 
 
 module.exports = router; 

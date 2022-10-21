@@ -8,8 +8,15 @@ const UrbanFarmerUpload = require('../models/Urbanfarmerupload');
 
 
 // Agricultural Officer Route
-router.get('/fo-area', (req, res) => {
-  res.render('dash-fo');
+// In case two people can access, use || (or) in the if statement if (req.user.role == 'farmerone' || req.user.role == 'agriculturofficer');
+router.get('/fo-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+  req.session.user = req.user;
+  if (req.user.role == 'farmerone') {
+    res.render('dash-fo');
+  } else {
+    res.send('This page is only accessible by Farmer One');
+  }
 });
+
 
 module.exports = router; 

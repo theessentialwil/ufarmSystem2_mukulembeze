@@ -8,8 +8,13 @@ const UrbanFarmerUpload = require('../models/Urbanfarmerupload');
 
 
 // Agricultural Officer Route
-router.get('/ao-area', (req, res) => {
-  res.render('dash-ao');
+router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+  req.session.user = req.user;
+  if (req.user.role == 'agriculturaofficer') {
+    res.render('dash-ao');
+  } else {
+    res.send('This page is only accessible by Agricultural Officer');
+  }
 });
 
 module.exports = router; 

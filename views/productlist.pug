@@ -24,7 +24,8 @@ block content
                         td #{product.productcategory}
                         td #{product.productname}
                         td #{product.producttype}
-                        td #{product.productimage}
+                        td 
+                            img(src="/"+product.productimage, alt="Image" width='150px' height="150px") 
                         //- td #{moment(us
                         td
                             a
