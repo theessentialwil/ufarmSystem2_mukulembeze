@@ -16,8 +16,10 @@ const UrbanFarmerUpload = require('./models/Urbanfarmerupload')
 
 // Importing Route files: see comments.txt
 const registerRoutes = require('./routes/registerRoutes');
-const urbanfarmerRoutes = require('./routes/urbanfarmerRoutes');
+const urbanfarmerRoutes = require('./routes/uf-routes');
 const authenticateRoutes = require('./routes/authenticationroutes');
+const agricOfficerRoutes = require('./routes/ao-routes');
+const farmerOneRoutes = require('./routes/fo-routes')
 
 // INSTANTIATIONS----------------****** section in Anatomy of an Express Server
 const app = express();
@@ -58,6 +60,8 @@ passport.deserializeUser(Registration.deserializeUser());
 app.use('/', registerRoutes); 
 app.use('/', urbanfarmerRoutes);
 app.use('/', authenticateRoutes);
+app.use('/', agricOfficerRoutes);
+app.use('/', farmerOneRoutes)
 
 
 app.get("*", (req, res) => {

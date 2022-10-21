@@ -29,7 +29,7 @@ stockmeasure: {
 unitprice: {
   type: Number
 },
-supplierid: {
+email: {
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Registration',
   required: true

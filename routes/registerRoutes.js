@@ -6,6 +6,11 @@ const Registration = require('../models/User');
 // see comments.txt
 
 
+// Temporary Links Route - Tired of Looking Up routes
+router.get('/links', (req,res) => {
+  res.render('links');
+});
+
 // home page route
 router.get('/index', (req,res) => {
   res.render('index');

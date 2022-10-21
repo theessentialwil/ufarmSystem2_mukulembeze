@@ -61,9 +61,9 @@ html(lang='en')
         .frmelement
           label(for='supplierid') Supplier ID (Email):
           br
-          select#supplierid.agricofficerinput(name='supplierid')
+          select#supplierid.agricofficerinput(name='email')
             if currentUser
-              option(value=currentUser._id) #{currentUser.userid}
+              option(value=currentUser._id) #{currentUser.email}
         .frmelement
           label(for='uniquenum') Unique Number:
           br
