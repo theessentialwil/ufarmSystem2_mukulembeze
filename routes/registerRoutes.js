@@ -25,15 +25,20 @@ router.post("/registerfo", async (req, res) => {
   console.log(req.body);
   try {
     const user = new Registration(req.body);
-    await Registration.register(user, req.body.password, (error) => {
-      if (error) {
-        throw error
-      }
-      res.redirect('/index');
-    });
+    let useridExists = await Registration.findOne({uniquenum:req.body.uniquenum})
+    if (useridExists) {
+      return res.status(400).send("Sorry that unique ID already exists, would you like to login?");
+    } else {
+      await Registration.register(user, req.body.password, (error) => {
+        if (error) {
+          throw error
+        }
+        res.redirect('/login');
+      });
+    }
   } catch (error) {
-      res.status(400).send("Sorry we're updating system");
-      console.log(error);
+    res.status(400).send("Sorry something's not adding up.");
+    console.log(error);
   }
 });
 
@@ -46,15 +51,15 @@ router.post("/registerao", async (req, res) => {
   console.log(req.body);
   try {
     const user = new Registration(req.body);
-    let useridExists = await Registration.findOne({userid:req.body.userid})
+    let useridExists = await Registration.findOne({uniquenum:req.body.uniquenum})
     if (useridExists) {
-      return res.status(400).send("user id already exists, would you like to login?");
+      return res.status(400).send("Sorry that unique ID already exists, would you like to login?");
     } else {
       await Registration.register(user, req.body.password, (error) => {
         if (error) {
           throw error
         }
-        res.redirect('/index');
+        res.redirect('/login');
       });
     }
   } catch (error) {
@@ -72,14 +77,19 @@ router.post("/ufregister", async (req, res) => {
   console.log(req.body);
   try {
     const user = new Registration(req.body);
-    await Registration.register(user, req.body.password, (error) => {
-      if (error) {
-        throw error
-      }
-      res.redirect('/index');
-    });
+    let useridExists = await Registration.findOne({uniquenum:req.body.uniquenum})
+    if (useridExists) {
+      return res.status(400).send("Sorry that unique ID already exists, would you like to login?");
+    } else {
+      await Registration.register(user, req.body.password, (error) => {
+        if (error) {
+          throw error
+        }
+        res.redirect('/login');
+      });
+    }
   } catch (error) {
-    res.status(400).send("Sorry we're updating system");
+    res.status(400).send("Sorry something's not adding up.");
     console.log(error);
   }
 });

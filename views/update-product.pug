@@ -1,0 +1,78 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx', crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/ufarmain.css')
+    title Registration
+nav.navbar.navbar-expand-lg.bg-light.pb-4
+    .container-fluid
+            form.d-flex.mt-2(role='search')
+                //- a.btn.btn-style(href='home-page.html') Back
+.container-fluid.form-style
+    form#signup.form(action='/produce/update/?id='+product._id name='productupdate' method='POST')
+        h3 Product Update 
+        hr
+        .row
+            .col-md-12
+                .form-field
+                    label(for='productname') Product Name:
+                    br
+                    select.agricofficerinput(name='productname')
+                        option(value="Cheese Salted" selected = product.productname === "Cheese Salted") Cheese Salted
+                        option(value="Ghee Salted" selected = product.productname === 'Ghee Salted') Ghee Salted
+                        option(value="Carrots" selected = product.productname === 'Carrots') Carrots
+                        option(value="Chicken" selected = product.productname === 'Chicken') Chicken
+                        option(value="Eggs" selected = product.productname === 'Eggs') Eggs
+                        option(value="Tomatoes" selected = product.productname === 'Tomatoes') Tomatoes
+                        option(value="Broccoli" selected = product.productname === 'Broccoli') Broccoli
+                        option(value="Yoghurt" selected = product.productname === 'Yoghurt') Yoghurt
+                        option(value="Milk" selected = product.productname === 'Milk') Milk
+                //- .row
+            br
+            br
+            br
+            .col-md-12
+                .form-field
+                    label(for='')
+                        | Price:
+                        //- small  *
+                    br
+                    input#price.agricofficerinput(type='number' name='unitprice' autocomplete='off' value=product.unitprice)
+            br
+            br
+            br
+            .col-md-12
+                .form-field
+                    label(for='')
+                        | Stock Count:
+                        //- small  *
+                    br
+                    input#ward.agricofficerinput(.agricofficerinputtype='number' name='stockcount' autocomplete='off' value=product.stockcount)
+            br
+            br
+            br
+            .col-md-12
+                .form-field
+                    label(for='') Delivery Mode:
+                    br
+                    select.agricofficerinput(name='deliverymode')
+                        option(value="pickup" selected = product.deliverymode === "pickup") Pick Up
+                        option(value="homedelivery" selected = product.deliverymode === "homedelivery") Home Delivery
+            br
+            br
+            br
+            .col-md-12
+                .form-field
+                    label Mode of Payment:
+                    br
+                    select.agricofficerinput(name='modeofpayment')
+                        option(value="cash" selected = product.modeofpayment === 'cash') Cash
+                        option(value="mobilemoney" selected = product.modeofpayment === 'mobilemoney') Mobile Money   
+            br
+            br
+            br
+            .form-field
+                input.btn.register-btn(type='submit' value='Save Changes')
+script(src='bootstrap-js/js/bootstrap.bundle.js')

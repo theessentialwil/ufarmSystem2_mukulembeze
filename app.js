@@ -7,8 +7,8 @@ const passport = require('passport');
 //express sesssion
 const expressSession = require('express-session')({
   secret: 'hermit#9',
-  resave: false,
-  saveUninitialized: false,
+  resave: false,                    // don't save session if unmodified
+  saveUninitialized: false,         // don't create session until something stored
   }); 
 // Import the User Model or Schema 
 const Registration = require('./models/User');

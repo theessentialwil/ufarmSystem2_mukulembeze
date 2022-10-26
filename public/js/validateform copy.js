@@ -38,9 +38,9 @@ const Validate = () => {
     uniqueNumError.textContent = 'Please enter unique ID';
     uniqueNumError.style = 'color: red; font-size: 12px; font-family: Arial, Helvetica, Sans-serif;';
     return false
-  } else if (uniqueNum.value.length < 10 || uniqueNum.value.length > 10)  {
+  } else if (!(uniqueNum.value.match(unregex)))  {
     uniqueNum.style.border = '1px solid red';
-    uniqueNumError.textContent = 'Unique ID should be 10 alphanumeric characters and follow this example format 👉 001-ABC-AB format';
+    uniqueNumError.textContent = 'Unique number must follow UF-001 format';
     uniqueNumError.style = 'color: red; font-size: 12px; font-family: Arial, Helvetica, Sans-serif;';
     return false
   } else {

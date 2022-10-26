@@ -8,7 +8,7 @@ const UrbanFarmerUpload = require('../models/Urbanfarmerupload');
 
 
 // Agricultural Officer Route
-router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {             // esures login to access agric officer area or dashboard
   req.session.user = req.user;
   if (req.user.role == 'agriculturaofficer') {
     res.render('dash-ao');

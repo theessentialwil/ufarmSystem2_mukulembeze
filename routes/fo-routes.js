@@ -9,7 +9,7 @@ const UrbanFarmerUpload = require('../models/Urbanfarmerupload');
 
 // Agricultural Officer Route
 // In case two people can access, use || (or) in the if statement if (req.user.role == 'farmerone' || req.user.role == 'agriculturofficer');
-router.get('/fo-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+router.get('/fo-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {          // // esures login to access farmer one area or dashboard           
   req.session.user = req.user;
   if (req.user.role == 'farmerone') {
     res.render('dash-fo');

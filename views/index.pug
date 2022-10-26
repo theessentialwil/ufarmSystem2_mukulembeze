@@ -11,139 +11,57 @@ html(lang='en')
     script(src='https://kit.fontawesome.com/1bfd8a1bfc.js', crossorigin='anonymous')
   body
     header
-      //- using Dark variant carousel with captions here source: https://getbootstrap.com/docs/5.2/components/carousel/
       .container-fluid
         .row
-          .col
-            nav.navbar.navbar-expand-lg.bg-light
-              .container-fluid
-                a.navbar-brand(href='index.html')
-                  img(src='/images/logo.png')
-                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-                  span.navbar-toggler-icon
-                #navbarSupportedContent.collapse.navbar-collapse
-                  ul.navbar-nav.me-auto.mb-2.mb-lg-0
-                    li.nav-item
-                      a.nav-link.active(aria-current='page', href='#') Home
-                    //-
-                      <li class="nav-item">
-                      <a class="nav-link" href="#">Sign In</a>
-                      </li>
-                    li.nav-item.dropdown
-                      a.nav-link.dropdown-toggle(href='#', role='button', data-bs-toggle='dropdown', aria-expanded='false')
-                        | Sign In
-                      ul.dropdown-menu
-                        li
-                          a.dropdown-item(data-bs-toggle='modal', data-bs-target='#exampleModal') AO
-                        //- The bootstrap modal id selector is what needs renaming in every other instance of the modal where you need many instances as in our case here
-                        li
-                          a.dropdown-item(data-bs-toggle='modal', data-bs-target='#exampleModal2') FO
-                        li
-                          hr.dropdown-divider
-                        li
-                          a.dropdown-item(href='#') UF
-                        li
-                          a.dropdown-item(href='#') User
-                    li.nav-item
-                      a.nav-link
-                        i.fa-solid.fa-cart-shopping
-                        | cart
-                  form.d-flex(role='search')
-                    input.form-control.me-2(type='search', placeholder='Search', aria-label='Search')
-                    button.btn.btn-outline-success(type='submit') Search
-      .container-fluid
-        .row
-          .col
+          .col.row_bg
             #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride='carousel')
-              .carousel-indicators
-                button.active(type='button', data-bs-target='#carouselExampleDark', data-bs-slide-to='0', aria-current='true', aria-label='Slide 1')
-                button(type='button', data-bs-target='#carouselExampleDark', data-bs-slide-to='1', aria-label='Slide 2')
-                button(type='button', data-bs-target='#carouselExampleDark', data-bs-slide-to='2', aria-label='Slide 3')
               .carousel-inner
-                .carousel-item.active(data-bs-interval='10000')
-                  img.d-block.w-100.carousel_image.img-fluid(src='/images/carou_3.png', style='height:150px; width:100%', alt='...')
-                  .carousel-caption.d-none.d-md-block
-                    //- <h5>representative placeholder content for the first slide.</p>
-                .carousel-item(data-bs-interval='2000')
-                  //- carousel height is adjusted by resizing the images for height
-                  img.d-block.w-100.carousel_image.img-fluid(src='/images/carou_2.png', style='height:150px; width:100%', alt='...')
-                  .carousel-caption.d-none.d-md-block
-                    //-
-                      <h5>Second slide label</h5>
-                      <p>Some representative placeholder content for the second slide.</p>
-                .carousel-item
-                  img.d-block.w-100.carousel_image.img-fluid(src='/images/carou_3.png', style='height:150px; width:100%', alt='...')
-                  .carousel-caption.d-none.d-md-block
-                    //-
-                      <h5>Third slide label</h5>
-                      <p>Some representative placeholder content for the third slide.</p>
-              button.carousel-control-prev(type='button', data-bs-target='#carouselExampleDark', data-bs-slide='prev')
-                span.carousel-control-prev-icon(aria-hidden='true')
-                span.visually-hidden Previous
-              button.carousel-control-next(type='button', data-bs-target='#carouselExampleDark', data-bs-slide='next')
-                span.carousel-control-next-icon(aria-hidden='true')
-                span.visually-hidden Next
-      .container
-        .row
-          .col
-            nav(style="--bs-breadcrumb-divider: '>';", aria-label='breadcrumb')
-              ol.breadcrumb
-                li.breadcrumb-item
-                  a(href='#') Home
-                li.breadcrumb-item.active(aria-current='page') Library
-      //- Modal for Agric officer sign in start
+                div.new_top 
+                  img(src='/images/logo.png', alt='...' maxwidth='262px' height='114px')
+                div.nav-float
+                  div.new-top-nav
+                    h5 
+                      a.my-new-link(href='/index') Home
+                  div.new-top-nav
+                    h5 
+                      a.my-new-link(href='#') About us 
+                  div.new-top-nav
+                    h5 
+                      a.my-new-link(href='#') Contact us 
+                  div.new-top-nav
+                    h5 
+                      //- a.my-new-link(href='/login') Signup
+                      a.my-new-link(data-bs-toggle='modal', data-bs-target='#exampleModal') Signup 
+                  div.new-top-nav
+                    h5 
+                      a.my-new-link(href='/login') LogIn 
       #exampleModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
         .modal-dialog
           .modal-content
             .modal-header
-              h5#exampleModalLabel.modal-title AO Sign In
+              h5#exampleModalLabel.modal-title Create New Account
               button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
             .modal-body
               form#agric-officer-singin
-                label(for='aouserid', name='aouserid') User ID (Email): &nbsp; &nbsp; &nbsp;
+                //- a.my-new-link(href='/registerao') AO Signup &nbsp; &nbsp; &nbsp;
+                //- br
+                //- br
+                a.my-new-link(href='/registerfo') FO Signup &nbsp;
                 br
-                input.agricofficerinput(type='email', name='aouserid', placeholder='Enter Email')
+                br
+                a.my-new-link(href='/ufregister') UF Signup &nbsp; &nbsp; &nbsp;
                 br
                 br
-                label(for='agric-officer-pwd', name='agric-officer-pwd') Password: &nbsp;
+                a.my-new-link(href='#') New User Signup &nbsp; &nbsp; &nbsp;
                 br
-                input.agricofficerinput(type='password', name='agric-officer-pwd')
-                hr
-                input#frm-btn-ao(type='submit', name='submit', value='Sign in')
+                br
+                //- hr
             .modal-footer
-              | &copy; Ufarm Masajja Agro Culture Limited
-      //- End of Modal for Agricultural Officer sign
-      //- Modal for Farmer One sign in start---------------------------
-      #exampleModal2.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
-        // The bootstrap modal id selector is what needs renaming in every other instance of the modal where you need many instances as in our case here
-        .modal-dialog
-          .modal-content
-            .modal-header
-              h5#exampleModalLabel.modal-title FO Sign In
-              button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
-            .modal-body
-              form#agric-officer-singin
-                label(for='aouserid', name='aouserid') User ID (Email): 
-                br
-                input.agricofficerinput(type='email', name='aouserid', placeholder='Enter Your Email')
-                br
-                br
-                label(for='agric-officer-pwd', name='agric-officer-pwd') Password: 
-                br
-                input.agricofficerinput(type='password', name='agric-officer-pwd')
-                hr
-                input#frm-btn-ao(type='submit', name='submit', value='Sign in')
-                br
-                // Below is how we connect modal to the link
-                p(style='text-align:center')
-                  a(href='fo-sign-up.html') Create Your Account
-            .modal-footer
-              | &copy; Ufarm Masajja Agro Culture Limited
-      //- End of Modal for Farmer One sign---------------------------------
+              | &copy; Ufarm Masajja Agro Culture Limited                  
     main
       .container
         .row
-          .col-md-4(style='background-color:lightyellow')
+          .col-md-4(style='')
             ul.list-group
               li.list-group-item.active(aria-current='true') Shop By Category
               li.list-group-item.ul-lst-grp-item Fruits
@@ -165,60 +83,36 @@ html(lang='en')
               li.list-group-item.ul-lst-grp-item Mboga Farmers
               li.list-group-item.ul-lst-grp-item Nkoko Nkulu Farmers Cohort
               li.list-group-item.ul-lst-grp-item Savannah Organic Supplies
-          .col-md-8(style='background-color:bisque')
+          .col-md-8(style='')
             .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
+              img.card-img-top(src='/images/broccoli.jpg', alt='...')
               .card-body
                 h6.card-title
-                  | Pasteurized Salted Butter
+                  | Broccoli
                   p
                   p.card-text Ugx 30,000
                   a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
             .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
+              img.card-img-top(src='/images/Carrots.jpg', alt='...')
               .card-body
                 h6.card-title
-                  | Pasteurized Salted Butter
+                  | Carrots
                   p
                   p.card-text Ugx 30,000
                   a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
             .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
+              img.card-img-top(src='/images/broccoli.jpg', alt='...')
               .card-body
                 h6.card-title
-                  | Pasteurized Salted Butter
+                  | Broccoli
                   p
                   p.card-text Ugx 30,000
                   a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
             .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
+              img.card-img-top(src='/images/Carrots.jpg', alt='...')
               .card-body
                 h6.card-title
-                  | Pasteurized Salted Butter
-                  p
-                  p.card-text Ugx 30,000
-                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
-            .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
-              .card-body
-                h6.card-title
-                  | Pasteurized Salted Butter
-                  p
-                  p.card-text Ugx 30,000
-                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
-            .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
-              .card-body
-                h6.card-title
-                  | Pasteurized Salted Butter
-                  p
-                  p.card-text Ugx 30,000
-                  a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
-            .card.mycardimensions
-              img.card-img-top(src='/images/butter.webp', alt='...')
-              .card-body
-                h6.card-title
-                  | Pasteurized Salted Butter
+                  | Carrots
                   p
                   p.card-text Ugx 30,000
                   a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order

@@ -1,27 +1,14 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    | &#x9;&#x9;
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    | &#x9;&#x9;
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    | &#x9;&#x9;
-    title Document
-    // CSS only
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx', crossorigin='anonymous')
-    link(rel='stylesheet', href='/css/ufarmain.css')
-  | &#x9;
-  body
+extends registerlayout
+block content
     form#frmborder(action='/login' name='urbanfarmerlogin' method="POST")
       h3.center-div You are Welcome! Please Login.
       .container-fluid
         .row
           .col-sm-12.regfrmborderao
             .loginfrmdiv
-              label(for='fouserid') User ID (Email): 
+              label(for='uniquenum') Unique ID:
               br
-              input#fouserid.agricofficerinput(type='email' name='email' placeholder='Enter Email')
+              input#uniquenum.agricofficerinput(type='text', name='uniquenum')
             .loginfrmdiv
               label(for='farmer-one-pwd') Password: 
               br

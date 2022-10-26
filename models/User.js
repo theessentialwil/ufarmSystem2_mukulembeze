@@ -1,3 +1,5 @@
+// Creating a Mongoose model comprises primarily of three parts: 1. Referencing or requiring Mongoose; 2. Defining the Schema; 3. Exporting the Model|| See: https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/
+
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
@@ -7,7 +9,9 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   uniquenum: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
   },
   firstname: {
     type: String,
@@ -39,7 +43,9 @@ const userSchema = new mongoose.Schema({
   // email is utilized as the userid
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
+    lowercase: true
   },
   password: {
     type: String,
@@ -62,10 +68,15 @@ const userSchema = new mongoose.Schema({
   },
   homedirections: {
     type: String
+  },
+  status: {
+    type: String,
+    default: "Pending",
+    enum: ['Appointed', 'Pending', 'Former']
   }
 })
 
 userSchema.plugin(passportLocalMongoose, {
-  usernameField: 'email'
+  usernameField: 'uniquenum'
 })
 module.exports = mongoose.model('Registration', userSchema);

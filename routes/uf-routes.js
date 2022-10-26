@@ -29,6 +29,7 @@ var storage = multer.diskStorage({
 //   res.render('ufupload', {urbanfarmers:urbanFarmerList});
 // });
 
+// Product Upload route
 router.get("/ufarmerupload", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   console.log("This is the Current User ", req.session.user);
   res.render("ufupload", { currentUser: req.session.user });
@@ -48,7 +49,7 @@ router.post("/ufarmerupload", connectEnsureLogin.ensureLoggedIn(), upload.single
   }
 });
 
-// Getting List of Produce From Database; The sort on line 55 is to get the most currently added product show up at the top.
+// Getting List of Products From Database; The sort on line 55 is to get the most currently added product show up at the top.
 router.get('/productlist', async (req,res) => {
   try {
     // const order = {_id:-1}
@@ -60,11 +61,12 @@ router.get('/productlist', async (req,res) => {
   }
 });
 
-// Update get and post Route
+// Update Product Route
 router.get('/produce/update/:id', async (req,res) => {
   try {
     const updateProduct = await UrbanFarmerUpload.findOne({_id:req.params.id})
-    res.render('updateproduct', {product:updateProduct});
+    res.render('update-product', {product:updateProduct});
+    console.log('Updated Produce', updateProduct);
   } catch (error) {
     res.status(400).send('Sorry we seem unable to update the product');
   }
@@ -79,21 +81,74 @@ router.post('/produce/update', async (req,res) => {
   }
 });
 
+// Approve Product Route
+router.get('/produce/approve/:id', async (req,res) => {
+  try {
+    const updateProduct = await UrbanFarmerUpload.findOne({_id:req.params.id})
+    res.render('approve', {product:updateProduct});
+    console.log('Product approved', updateProduct);
+  } catch (error) {
+    res.status(400).send('Sorry we seem unable to approve the product');
+  }
+});
+
+router.post('/produce/approve', async (req,res) => {
+  try {
+    await UrbanFarmerUpload.findOneAndUpdate({_id:req.query.id}, req.body);
+    res.redirect('/productlist');
+  } catch (error) {
+    res.status(400).send('Sorry we were unable to update product');
+  }
+});
+
+// Changing Availability Route
+router.get('/produce/available/:id', async (req,res) => {
+  try {
+    const saleProduct = await UrbanFarmerUpload.findOne({_id:req.params.id})
+    res.render('availability', {item:saleProduct});
+    console.log('Product approved', saleProduct);
+  } catch (error) {
+    res.status(400).send('Sorry we seem unable to approve the product');
+  }
+});
+
+router.post('/produce/available', async (req,res) => {
+  try {
+    await UrbanFarmerUpload.findOneAndUpdate({_id:req.query.id}, req.body);
+    res.redirect('/productlist');
+  } catch (error) {
+    res.status(400).send('Sorry we were unable to update product');
+  }
+});
+
 // Urban farmer dashboard route
-router.get('/uf-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+router.get('/uf-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {           // esures login to access urban farmer area or dashboard
   req.session.user = req.user;
-  if (req.user.role == 'agriculturaofficer') {
+  if (req.user.role == 'urbanfarmer') {
     res.render('dash-uf');
   } else {
     res.send('This page is only accessible by Urban farmer');
   }
 });
 
+// Return Approved list of Products
+router.get('/seeapprovedlist', async (req,res) => {
+  try {
+    // const order = {_id:-1}
+    let products = await UrbanFarmerUpload.find().sort({$natural:-1});
+    res.render('listofapproved', {goods:products});
+    console.log(products)
+  } catch (error) {
+    res.status(400).send("Sorry there are no products matching your request");
+    console.log(error);
+  }
+});
+
 
 // Delete Product
-router.post('/produce/delete', async (req,res) => {
+router.post('/produce/delete', async (req,res) => {                   // the route path here is attached to the form action of the deletebe button in the productlist.pug file where items from where deleting items will be effected.
   try {
-    await UrbanFarmerUpload.deleteOne({_id:req.body.id});
+    await UrbanFarmerUpload.deleteOne({_id:req.body.id});             // await is normally on database operations so the key word await is normally followed by the name of the database collection where the operation is going to take place.
     res.redirect('back');
   } catch (error) {
     res.status(400).send('Sorry product could not be deleted');

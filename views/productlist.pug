@@ -1,10 +1,11 @@
 extends layout2
 block content
     header.card-header
-        h4.card-title Product List
+        br
+        h2 Product List
     br
     nav
-    #nav-tab.nav.nav-tabs(role='tablist')
+    //- #nav-tab.nav.nav-tabs(role='tablist')
         //- a#nav-profile-tab.nav-item.nav-link(href='/registerFarmerOne') Register FarmerOne
     #nav-tabContent.tab-content
     br
@@ -15,28 +16,35 @@ block content
                 th Product Name
                 th Product Type
                 th Product Image
+                th Status
+                th Availability
                 th Update
+                th Change Status
                 th Delete
         tbody
             if myproducts.length
                 each product in myproducts
-                    tr
-                        td #{product.productcategory}
-                        td #{product.productname}
-                        td #{product.producttype}
-                        td 
-                            img(src="/"+product.productimage, alt="Image" width='150px' height="150px") 
-                        //- td #{moment(us
-                        td
-                            a
-                                button.btn.btn-primary.btn-block(href='/produce/update/'+product._id) Update
-                        td
-                            form(method="post" action='/produce/delete')
-                                input(type="hidden" placeholder="" name="id", value=product._id)
-                                button.btn.btn-danger.btn-block(type="submit") Delete
-    div.form-row
-        div.col.form-group
-            a(class='button' href='/agricOfficerDash') Back
+                    if product.status == "Pending"
+                        tr
+                            td #{product.productcategory}
+                            td #{product.productname}
+                            td #{product.producttype}
+                            td 
+                                div.imgdivs
+                                    img(src="/"+product.productimage, alt="Image" width='150px' height="150px") 
+                            td #{product.status}
+                            td #{product.availability}
+                            td
+                                a#report-btn-update(href='/produce/update/'+product._id) Update
+                            td
+                                a#report-btn-approve(href='/produce/approve/'+product._id) Approve
+                            td
+                                form(method="post" action='/produce/delete')
+                                    input(type="hidden" placeholder="" name="id", value=product._id)
+                                    button#report-btn-del(type="submit") Delete
+        div.form-row
+            div.col.form-group
+                a(class='button' href='/agricOfficerDash') 
 
 block footer
     div.col-md-12 ©️ 2022 UFARM Masajja Tukolerewamu Incorporated

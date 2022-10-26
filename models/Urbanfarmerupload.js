@@ -35,8 +35,8 @@ email: {
   required: true
 },
 uniquenum: {
-  type: String,
-  required: true
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Registration',
 },
 ward: {
   type: mongoose.Schema.Types.ObjectId,

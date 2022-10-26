@@ -34,41 +34,19 @@ nav.navbar.navbar-expand-lg.bg-light.pb-4
             form.d-flex.mt-2(role='search')
                 a.btn.btn-style(href='home-page.html') Back
 .container-fluid.form-style
-    form#signup.form(action='/produce/update/?id'+products._id name='productupdate' method='POST')
+    form#signup.form(action='/produce/available/?id='+item._id name='productupdate' method='POST')
         h3 Update Produce 
         hr
         .row
             .col
                 .form-field
-                    label(for='productname') Produce Name:
-                    select(name='productname')
-                        option(value="Cheese Salted" selected = products.productname === "Cheese Salted") Cheese Salted
-                        option(value="Ghee Salted" selected = products.productname === 'Ghee Salted') Ghee Salted
-        .row
-            .col
-                .form-field
-                    label(for='')
-                        | Price:
-                        small  *
-                    input#price(type='number' name='price' autocomplete='off' value=product.price)
-            .col
-                .form-field
-                    label(for='')
-                        | Quantity:
-                        small  *
-                    input#ward(type='number' name='quantity' autocomplete='off' value=product.quantity)
-            .col
-                .form-field
-                    label(for='') Mode of Delivery:
-                    select(name='modeofdelivery')
-                        option(value="pickup") Pick Up
-                        option(value="homedelivery") Home Delivery
-            .col
-                .form-field
-                    label Mode of Payment:
-                    select(name='modeofpayment')
-                        option(value="cash" selected = product.producename === 'cash') Cash
-                        option(value="mobilemoney" selected = product.producename === 'mobilemoney') Mobile Money   
+                    label(for='availability') Product Availability:
+                    select(name='availability')
+                        option(value="available" selected = item.availability === "available") Available
+                        option(value="booked" selected = item.availability === 'booked') Booked
+                        option(value="N/A" selected = item.availability === 'N/A') N/A
+
+
             .form-field
                 input.btn.register-btn(type='submit' value='Register')
 script(src='bootstrap-js/js/bootstrap.bundle.js')

@@ -7,7 +7,7 @@
 
 body {
     background-color: white;
-    background-image: url("/images/dbg1.webp");
+    /* background-image: url("/images/dbg1.webp"); */
 }
 
 .container-fluid {
@@ -51,13 +51,13 @@ body {
 
 .my-btn-primary {
     color: #fff;
-    background-color: #5fb95e;
+    background-color: rgb(56, 104, 143);
     border: none;
     width: 8rem;
   }
   
 .my-btn:hover {
-    background-color: darkgreen;
+    background-color: #5fb95e;;
 }
 
   .card {
@@ -127,7 +127,7 @@ label {
 }
 
 #frm-btn-ao {
-    background-color: #5fb95e;
+    background-color: rgb(4, 6, 59);
     color: white;
     width: 50%;
     height: 30px;
@@ -165,7 +165,7 @@ label {
 }
 
 #frm-btn-ao:hover {
-    background-color: rgb(4, 6, 59);
+    background-color: #5fb95e;
 }
 
 .modal-footer {
@@ -180,6 +180,8 @@ label {
     box-shadow: 10px 20px 20px 10px slategrey;
     border-radius: 0 20px 0 20px;
     padding-left: 3rem;
+    background-image: url("/images/dbg1.webp");
+
 }
 .regfrmborderao {
     margin-top: 20px;
@@ -190,6 +192,7 @@ label {
     border-radius: 0 20px 0 20px;
     padding-left: 3rem;
     width: 750px;
+    background-image: url("/images/dbg1.webp");
 }
 #frmDate {
     width: 300px;
@@ -273,4 +276,113 @@ label {
 
 .footerxmargin {
     margin-top: 400px;
+}
+
+.row_bg {
+    background-image: url("/images/barner2.png");
+}
+
+.new_top{
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 12%;
+    float: left;
+}
+
+.mylist-group {
+    background-color: rgb(4, 6, 59);
+}
+
+.nav-float {
+    float:right;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 40%;
+}
+
+.new-top-nav {
+    float: left; 
+    padding: 20px;
+    font-size: 1rem;
+}
+
+.my-new-link {
+    color: black;
+    text-decoration: none;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.my-new-link:hover {
+    color: rgb(56, 4, 49);
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-emphasis-position: over;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#report-btn-del {
+    background-color: rgb(4, 6, 59);
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 0;
+    border-radius: 0 10px 0 10px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    display:block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#report-btn-update {
+    background-color: rgb(4, 6, 59);
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 0;
+    border-radius: 0 10px 0 10px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    display:block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#report-btn-approve {
+    background-color: rgb(4, 6, 59);
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 0;
+    border-radius: 0 10px 0 10px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    display:block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.imgdivs {
+    width:80px;
+    height: 60px;
+}
+
+.tably {
+    font-size: 24px;
+    /* width: auto; */
+}
+
+#report-btn-del:hover {
+        background-color: red;
+
+}
+#report-btn-update:hover {
+    background-color: rgb(21, 168, 58);
+    
+}
+#report-btn-approve:hover {
+    background-color: darkgreen;
 }
