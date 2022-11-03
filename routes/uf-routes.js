@@ -121,7 +121,7 @@ router.post('/produce/available', async (req,res) => {
   }
 });
 
-// Urban farmer dashboard route
+// Urban farmer dashboard                                                             Notice in effecting the login that the authentication routes file and this route work together and important is Line 13 that specifies the role as it is in the name attribute of the role field in the signup form
 router.get('/uf-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {           // esures login to access urban farmer area or dashboard
   req.session.user = req.user;
   if (req.user.role == 'urbanfarmer') {

@@ -5,12 +5,13 @@ block content
     br
     nav
     #nav-tab.nav.nav-tabs(role='tablist')
-        a#nav-profile-tab.nav-item.nav-link(href='/registerFarmerOne') Register FarmerOne
+        a#nav-profile-tab.nav-item.nav-link(href='/fo-list') All Farmer Ones
     #nav-tabContent.tab-content
     br
     table.table.table-bordered 
         thead
             tr
+                th Business Name 
                 th First Name 
                 th Last Name
                 th Sex
@@ -20,19 +21,18 @@ block content
                 th Update
                 th Delete
         tbody
-            if farmerones.length
-                each farmerone in farmerones
+            if farmerOnes.length
+                each farmerone in farmerOnes
                     tr
+                        td #{farmerone.supplierbizname}
                         td #{farmerone.firstname}
                         td #{farmerone.lastname}
                         td #{farmerone.sex}
                         td #{farmerone.nin}
-                        td #{farmerone.ward}
                         td #{farmerone.DateOfReg}
-                        //- td #{moment(us
+                        td #{farmerone.ward}
                         td
-                            a
-                                button.btn.btn-primary.btn-block(href='/farmerOne/update/'+farmerone._id) Update
+                            a#report-btn-update(href='/farmerOne/update/'+farmerone._id) Update
                         td
                             form(method="post" action='/farmerOne/delete')
                                 input(type="hidden" placeholder="" name="id", value=farmerone._id)

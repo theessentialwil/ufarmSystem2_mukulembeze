@@ -1,6 +1,20 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+supplierbizname: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Registration'
+},
+email: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Registration',
+  required: true
+},
+ward: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Registration',
+  required: true
+},
 productcode: {
   type: String,
   required: true
@@ -13,35 +27,21 @@ productname: {
   type: String,
   required: true
 },
+availability:  {
+  type: String
+},
 producttype: {
   type: String,
   required: true
 },
-productimage: {
-  type: String
-},
-stockcount: {
+stockbalance: {
   type: Number,
-},
-stockmeasure: {
-  type: String,
 },
 unitprice: {
   type: Number
 },
-email: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Registration',
-  required: true
-},
-uniquenum: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Registration',
-},
-ward: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Registration',
-  required: true
+productimage: {
+  type: String
 },
 pytmode: {
   type: String
@@ -49,16 +49,20 @@ pytmode: {
 deliverymode: {
   type: String
 },
+uniquenum: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Registration',
+},
 status: {
   type: String,
   default: "Pending",
   enum: ['Pending', 'Approved']
 },
-availability: {
-  type: String, 
-  default: "available",
-  enum: ["available", "booked", "N/A"] 
-  }
+// availability: {
+//   type: String, 
+//   default: "available",
+//   enum: ["available", "booked", "N/A"] 
+//   }
 })
 
 module.exports = mongoose.model('UrbanFarmerUpload', userSchema);

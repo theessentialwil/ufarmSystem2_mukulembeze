@@ -1,18 +1,22 @@
 extends registerlayout
 block content
-    form(action='/registerao', name='agricofficersignup', method='POST')
+    form(action='/registerao' name='agricofficersignup' method='POST')
       .container
         .row.regfrmborderao
           .col-md-12
             h3 Agricultural Officer SignUp
             hr
           .col-md-6
+              //- .frmelement
+              //-   label(for='role') Role
+              //-   br
+              //-   select#role.select-drpdwn(name='role' readonly value='Agricultural Officer')
+              //-     option(value='notspecified')  
+              //-     option(value='agriculturalofficer') Agricultural Officer
               .frmelement
-                label(for='role') Role
+                label(for='role') Role:
                 br
-                select#role.select-drpdwn(name='role')
-                  option(value='notspecified')  
-                  option(value='agriculturalofficer') Agricultural Officer
+                input#role.agricofficerinput(type='text', name='role' readonly value='Agricultural Officer')
               .frmelement
                 label(for='uniquenum') Unique ID:
                 br
@@ -45,10 +49,6 @@ block content
               br
               input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno')
             .frmelement
-              label(for='frmDate') Date of Registration:
-              br
-              input#frmDate(type='text', name='DateOfReg', value='', readonly='')
-            .frmelement
               label(for='email') Email: 
               br
               input#email.agricofficerinput(type='email', name='email', placeholder='Enter Email')
@@ -56,6 +56,10 @@ block content
               label(for='farmer-one-pwd') Password: 
               br
               input.agricofficerinput(type='password', name='password')
+            .frmelement
+              label(for='frmDate') Date of Registration:
+              br
+              input#frmDate.agricofficerinput(type='text', name='DateOfReg', value='', readonly='')
           .col-md-12
             hr
             input#frm-btn-ao(type='submit', value='Sign up      📝')

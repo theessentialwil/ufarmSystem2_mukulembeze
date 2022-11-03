@@ -31,18 +31,18 @@ const Validate = () => {
     roleError.textContent = "";
   }
 
-  const unregex = /^UF-([0-9]{3})+$/;
+  const unregex = /^UF-B9006-[a-zA-Z]+\d\d$/;
   
   if (uniqueNum.value == "") {
     uniqueNum.style.border = '1px solid red';
     uniqueNumError.textContent = 'Please enter unique ID';
     uniqueNumError.style = 'color: red; font-size: 12px; font-family: Arial, Helvetica, Sans-serif;';
     return false
-  } else if (uniqueNum.value.length < 10 || uniqueNum.value.length > 10)  {
-    uniqueNum.style.border = '1px solid red';
-    uniqueNumError.textContent = 'Unique ID should be 10 alphanumeric characters and follow this example format 👉 001-ABC-AB format';
-    uniqueNumError.style = 'color: red; font-size: 12px; font-family: Arial, Helvetica, Sans-serif;';
-    return false
+  // } else if (!unregex.test(uniqueNum))  {
+  //   uniqueNum.style.border = '1px solid red';
+  //   uniqueNumError.textContent = 'Unique ID should be 12 alphanumeric. The first 9 characters must be UF-B9006- and the last three should be a capital letter followed by two digits';
+  //   uniqueNumError.style = 'color: red; font-size: 12px; font-family: Arial, Helvetica, Sans-serif;';
+  //   return false
   } else {
     uniqueNum.style.border = '1px solid green';
     uniqueNumError.textContent = "";

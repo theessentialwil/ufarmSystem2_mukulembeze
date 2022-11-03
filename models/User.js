@@ -40,7 +40,6 @@ const userSchema = new mongoose.Schema({
   DateOfReg: {
     type: String
   },
-  // email is utilized as the userid
   email: {
     type: String,
     required: true,
@@ -67,6 +66,9 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   homedirections: {
+    type: String
+  },
+  supplierbizname: {
     type: String
   },
   status: {
