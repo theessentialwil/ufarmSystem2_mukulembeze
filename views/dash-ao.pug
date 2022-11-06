@@ -1,12 +1,112 @@
 extends dashlayout
 block content
-  .container
-        .row
-          .col
-            .divtopmargin
-              h1  Agricultural Officer Administration Dashboard
-          .row
-            .col-3.create Create
-            .col-3.read Read
-            .col-3.update Update
-            .col-3.delete Delete
+    .container-fluid
+      .row
+        .col-md-12.dash_title
+          br
+          h4 Agricultural Officer Administration
+          br
+        .col-md-3.dash_left 
+          br
+          br
+          h5 Stock Performance
+            hr
+            h5 Dairy
+                h6 Stockbalance (units): #{totalD.totalQuantity}
+                h6 Income Estimate: #{new Intl.NumberFormat().format(totalD.totalCost)} /=
+            hr
+            h5 Horticulture
+                h6 Stockbalance (units): #{totalH.totalQuantity}
+                h6 Income Estimate: #{new Intl.NumberFormat().format(totalH.totalCost)} /=
+            hr
+            h5 Poultry
+                h6 Stockbalance (units): #{totalP.totalQuantity}
+                h6 Income Estimate: #{new Intl.NumberFormat().format(totalP.totalCost)} /=
+        .col-md-9.dash_right
+          ul#myTab.nav.nav-tabs(role='tablist')
+            li.nav-item.tab(role='presentation')
+              button#home-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#home-tab-pane', type='button', role='tab', aria-controls='home-tab-pane', aria-selected='true') 📗 Current Farmer Ones
+            li.nav-item.tab(role='presentation')
+              button#profile-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#profile-tab-pane', type='button', role='tab', aria-controls='profile-tab-pane', aria-selected='false') 📘 All Farmer Ones
+            li.nav-item.tab(role='presentation')
+              button#contact-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#contact-tab-pane', type='button', role='tab', aria-controls='contact-tab-pane', aria-selected='false') Contact
+            li.nav-item.tab(role='presentation')
+              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') More
+          #myTabContent.tab-content
+            #home-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='home-tab', tabindex='0')
+              .div-in-tab
+                a(class='button' href='/registerfo') ✍️Register New Farmer One
+                br
+                br
+                table.table.table-bordered 
+                    thead
+                        tr
+                            th Ward 
+                            th First Name 
+                            th Last Name
+                            th Sex
+                            th Date of Reg
+                            th Status
+                            th Activities
+                            th Contact 
+                            th Update
+                    tbody
+                        if seniors.length
+                            each senior in seniors
+                                tr
+                                    td #{senior.ward}
+                                    td #{senior.firstname}
+                                    td #{senior.lastname}
+                                    td #{senior.sex}
+                                    td #{senior.DateOfReg}
+                                    td #{senior.status}
+                                    td #{senior.activities}
+                                    td #{senior.phoneno}
+                                    td
+                                        a#report-btn-update(href='/farmerone/update/'+senior._id) Update
+            #profile-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab', tabindex='0')
+              .div-in-tab
+                a(class='button' href='/registerfo') ✍️Register New Farmer One
+                br
+                br
+                table.table.table-bordered 
+                    thead
+                        tr
+                            th Ward 
+                            th First Name 
+                            th Last Name
+                            th Sex
+                            th Date of Reg
+                            th Status
+                            th Activities
+                            th Contact 
+                            th Update
+                    tbody
+                        if farmerOnes.length
+                            each farmerone in farmerOnes
+                                tr
+                                    td #{farmerone.ward}
+                                    td #{farmerone.firstname}
+                                    td #{farmerone.lastname}
+                                    td #{farmerone.sex}
+                                    td #{farmerone.DateOfReg}
+                                    td #{farmerone.status}
+                                    td #{farmerone.activities}
+                                    td #{farmerone.phoneno}
+                                    td
+                                        a#report-btn-update(href='/farmerone/update/'+farmerone._id) Update
+            #contact-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab', tabindex='0')
+              .div-in-tab
+                | List of Farmer Ones and Link to register Farmer Ones here
+            #disabled-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='disabled-tab', tabindex='0')
+              .div-in-tab
+                | List of Farmer Ones and Link to register Farmer Ones here
+          .col-md-3
+            br
+            br
+            hr
+            h5 Dairy Massaja 1
+                //- h6 Stockbalance (units): #{totalWardD.totalQuantity}
+                //- h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD.totalCost)} /=
+    footer
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa', crossorigin='anonymous')

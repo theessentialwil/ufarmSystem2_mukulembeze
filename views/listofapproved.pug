@@ -17,6 +17,7 @@ block content
                 th Product Image
                 th Availability
                 th Change Availability
+                th Change Status
                 //- th Delete
         tbody
             if goods.length
@@ -27,10 +28,13 @@ block content
                             td #{item.productname}
                             td #{item.producttype}
                             td 
-                                img(src="/"+item.productimage, alt="Image" width='150px' height="150px") 
+                                div.imgdivs
+                                    img(src="/"+item.productimage, alt="Image" width='150px' height="150px") 
                             td #{item.availability}
                             td
                                 a.btn.btn-secondary.btn-block(href='/produce/available/'+item._id) Availability
+                            td
+                                a#report-btn-approve(href='/produce/approve/'+item._id) Reverse Approve
                             td
                                 form(method="post" action='/produce/delete')
                                     input(type="hidden" placeholder="" name="id", value=item._id)

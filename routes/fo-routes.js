@@ -22,7 +22,7 @@ router.get('/fo-area', connectEnsureLogin.ensureLoggedIn(), (req, res) => {     
 router.get('/fo-list', async (req,res) => {
   try {
     // const order = {_id:-1}
-    let leadFarmers = await Registration.find().sort({$natural:-1});
+    let leadFarmers = await Registration.find({role: "Farmer One"}).sort({$natural:-1});
     res.render('farmer-one-list', {farmerOnes:leadFarmers});
   } catch (error) {
     res.status(400).send("Sorry there seems to be no Farmer Ones matching your request");

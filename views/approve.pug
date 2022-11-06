@@ -8,17 +8,20 @@ head
     title Product Approval
 .container-fluid.form-style
     form#signup.form(action='/produce/approve/?id='+product._id name='productupdate' method='POST')
-        h3 Approve Product 
-        hr
-        .row
-            .col
-                .form-field
-                    label(for='status') Change status:
-                    br
-                    select.agricofficerinput(name='status')
-                        option(value="Pending" selected = product.status === "Pending") Pending
-                        option(value="Approved" selected = product.status === 'Approved') Approved
+        .loginfrmdiv
+            h3 Approve Product 
+            hr
+            .row
+                .col
+                    .form-field
+                        label(for='status') Change status:
+                        br
+                        select.agricofficerinput(name='status')
+                            option(value="Pending" selected = product.status === "Pending") Pending
+                            option(value="Approved" selected = product.status === 'Approved') Approved
+                        br
+                        br
 
-            .form-field
-                input.btn.register-btn(type='submit' value='Approve')
+                .form-field
+                    input.my-btn-primary.btn.register-btn(type='submit' value='Approve')
 script(src='bootstrap-js/js/bootstrap.bundle.js')

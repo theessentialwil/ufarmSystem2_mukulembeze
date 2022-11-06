@@ -53,17 +53,11 @@ body {
     color: #fff;
     background-color: rgb(56, 104, 143);
     border: none;
-    border-radius: 20px;
     width: 8rem;
   }
   
 .my-btn:hover {
     background-color: #5fb95e;;
-}
-
-.btn:hover {
-    background-color: #5fb95e;
-    color: white;
 }
 
   .card {
@@ -366,7 +360,7 @@ label {
 #report-btn-approve {
     background-color: rgb(4, 6, 59);
     color: white;
-    width: 100px;
+    width: 80px;
     height: 30px;
     border: 0;
     border-radius: 0 10px 0 10px;
@@ -483,8 +477,4 @@ label {
 
 .div-in-tab {
     margin-top: 20px;
-}
-
-a {
-    text-decoration: none;
 }
