@@ -44,13 +44,15 @@ router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
       console.log("Hort collections", totalHort)
       console.log("Dairy collections", totalDairy)
 
-      // let totalDairyByWard = await UrbanFarmerUpload.aggregate([
-      //   { $match: { productcategory: "Diary", ward: "Masajja-1" } },
-      //   { $group: { _id: "$all", 
-      //   totalQuantity: { $sum: "$stockbalance" },
-      //   totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
-      //   }}
-      // ])
+
+      let totalDairyByWard = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Poultry"}, {ward: "Masajja-2"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+      console.log("This is Total Dairy by Ward: " + totalDairyByWard);
 
       res.render('dash-ao', {
       farmerOnes:leadFarmers, 
@@ -58,7 +60,7 @@ router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
       totalP:totalPoultry[0], 
       totalH:totalHort[0], 
       totalD:totalDairy[0],
-      // totalWardD:totalDairyByWard[0]
+      totalWardD:totalDairyByWard[0]
     });
     } catch (error) {
       res.status(400).send("Sorry there seems to be no Farmer Ones matching your request");

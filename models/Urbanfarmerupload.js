@@ -11,9 +11,7 @@ email: {
   required: true
 },
 ward: {
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Registration',
-  required: true
+  type: String
 },
 productcode: {
   type: String,
