@@ -1,25 +1,34 @@
-extends dashlayout
+extends dashlayout-4-dashboards
 block content
     .container-fluid
       .row
         .col-md-12.dash_title
-          br
-          h4 Agricultural Officer Administration
-          br
+          nav.navbar.navbar-expand-lg.bg-light
+              .container-fluid
+                a.navbar-brand(href='/index' target='_blank')
+                  img.img2(src='/images/logo.png')
+                  a.nav-link.active(aria-current='page', href='/index' target="_blank") Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                #navbarSupportedContent.collapse.navbar-collapse
+                  ul.navbar-nav.me-auto.mb-2.mb-lg-0
+                    li.nav-item
+                      h4 Agricultural Officer Administration
+                  .d-flex(role='search')
+                    form(method='POST' action='/logout')
+                      button.btn.btn-outline-success(type='submit') Logout
         .col-md-3.dash_left 
           br
           br
           h5 Stock Performance
             hr
-            h5 Dairy
+            h5 🐮 Dairy
                 h6 Stockbalance (units): #{totalD.totalQuantity}
                 h6 Income Estimate: #{new Intl.NumberFormat().format(totalD.totalCost)} /=
             hr
-            h5 Horticulture
+            h5 🍎 Horticulture
                 h6 Stockbalance (units): #{totalH.totalQuantity}
                 h6 Income Estimate: #{new Intl.NumberFormat().format(totalH.totalCost)} /=
             hr
-            h5 Poultry
+            h5 🐔 Poultry
                 h6 Stockbalance (units): #{totalP.totalQuantity}
                 h6 Income Estimate: #{new Intl.NumberFormat().format(totalP.totalCost)} /=
         .col-md-9.dash_right
@@ -29,13 +38,13 @@ block content
             li.nav-item.tab(role='presentation')
               button#profile-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#profile-tab-pane', type='button', role='tab', aria-controls='profile-tab-pane', aria-selected='false') 📘 All Farmer Ones
             li.nav-item.tab(role='presentation')
-              button#contact-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#contact-tab-pane', type='button', role='tab', aria-controls='contact-tab-pane', aria-selected='false') Contact
+              button#contact-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#contact-tab-pane', type='button', role='tab', aria-controls='contact-tab-pane', aria-selected='false') Sales
             li.nav-item.tab(role='presentation')
               button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') More
           #myTabContent.tab-content
             #home-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='home-tab', tabindex='0')
               .div-in-tab
-                a(class='button' href='/registerfo') ✍️Register New Farmer One
+                a(class='button' href='/registerfo' target="_blank") ✍️Register New Farmer One
                 br
                 br
                 table.table.table-bordered 
@@ -66,7 +75,7 @@ block content
                                         a#report-btn-update(href='/farmerone/update/'+senior._id) Update
             #profile-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab', tabindex='0')
               .div-in-tab
-                a(class='button' href='/registerfo') ✍️Register New Farmer One
+                a(class='button' href='/registerfo' target="_blank") ✍️Register New Farmer One
                 br
                 br
                 table.table.table-bordered 
@@ -97,16 +106,112 @@ block content
                                         a#report-btn-update(href='/farmerone/update/'+farmerone._id) Update
             #contact-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab', tabindex='0')
               .div-in-tab
-                | List of Farmer Ones and Link to register Farmer Ones here
+                <p>Populating Sales analytics.
+                .loader
             #disabled-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='disabled-tab', tabindex='0')
               .div-in-tab
-                | List of Farmer Ones and Link to register Farmer Ones here
-          .col-md-3
-            br
-            br
-            hr
-            h5 Dairy Massaja 1
-                h6 Stockbalance (units): #{totalWardD.totalQuantity}
-                h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD.totalCost)} /=
+                <p>Network connection unusually slow. Sorry this may take a couple of days!
+                .loader
+        br
+        br
+        hr
+           //- Accordion Starts here
+        #accordionFlushExample.accordion.accordion-flush
+          .accordion-item
+            h2#flush-headingOne.accordion-header
+              button.accordion-button.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#flush-collapseOne', aria-expanded='false', aria-controls='flush-collapseOne')
+                | Dairy Numbers by Ward
+            #flush-collapseOne.accordion-collapse.collapse(aria-labelledby='flush-headingOne', data-bs-parent='#accordionFlushExample')
+              .accordion-body
+                .container-fluid
+                  .row
+                    .col-md-3.wardbg
+                      hr
+                      h5 🐮 Dairy Massaja 1
+                          h6 Stockbalance (units): #{totalWardD1.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD1.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      h5 🐮 Dairy Massaja 2
+                          h6 Stockbalance (units): #{totalWardD2.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD2.totalCost)} /=
+                      hr
+                    .col-md-3.wardbg
+                      hr
+                      h5 🐮 Dairy Massaja 3
+                          h6 Stockbalance (units): #{totalWardD3.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD3.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      h5 🐮 Dairy Massaja 4
+                          h6 Stockbalance (units): #{totalWardD4.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD4.totalCost)} /=
+                      hr
+          .accordion-item
+            h2#flush-headingTwo.accordion-header
+              button.accordion-button.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#flush-collapseTwo', aria-expanded='false', aria-controls='flush-collapseTwo')
+                | Horticulture Numbers by Ward
+            #flush-collapseTwo.accordion-collapse.collapse(aria-labelledby='flush-headingTwo', data-bs-parent='#accordionFlushExample')
+              .accordion-body
+                .container-fluid
+                  .row
+                    .col-md-3.wardbg
+                      hr
+                      h5 🥦 Horticulture Massaja 1
+                          h6 Stockbalance (units): #{totalWardH1.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH1.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      h5 🥦 Horticulture Massaja 2
+                          h6 Stockbalance (units): #{totalWardH2.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH2.totalCost)} /=
+                      hr
+                    .col-md-3.wardbg
+                      hr
+                      h5 🥦 Horticulture Massaja 3
+                          h6 Stockbalance (units): #{totalWardH3.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH3.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      h5 🥦 Horticulture Massaja 4
+                          h6 Stockbalance (units): #{totalWardH4.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH4.totalCost)} /=
+                      hr
+          .accordion-item
+            h2#flush-headingThree.accordion-header
+              button.accordion-button.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#flush-collapseThree', aria-expanded='false', aria-controls='flush-collapseThree')
+                | Poultry Numbers by Ward
+            #flush-collapseThree.accordion-collapse.collapse(aria-labelledby='flush-headingThree', data-bs-parent='#accordionFlushExample')
+              .accordion-body
+                .container-fluid
+                  .row 
+                    .col-md-3.wardbg
+                      hr
+                      h5 🐔 Poultry Massaja 1
+                          h6 Stockbalance (units): #{totalWardP1.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP1.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      h5 🐔 Poultry Massaja 2
+                          h6 Stockbalance (units): #{totalWardP2.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP2.totalCost)} /=
+                      hr
+                    .col-md-3.wardbg
+                      hr
+                      h5 🐔 Poultry Massaja 3
+                          h6 Stockbalance (units): #{totalWardP3.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP3.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      h5 🐔 Poultry Massaja 4
+                          h6 Stockbalance (units): #{totalWardP4.totalQuantity}
+                          h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP4.totalCost)} /=
+                      hr
     footer
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa', crossorigin='anonymous')

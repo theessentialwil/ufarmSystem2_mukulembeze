@@ -2,7 +2,7 @@ const express= require('express');
 const router = express.Router(); 
 const multer = require('multer');
 const connectEnsureLogin = require('connect-ensure-login');
-// Importing the User Model or Schema
+// Importing the Model(s) or Schema(s)
 const Registration = require('../models/User');
 const UrbanFarmerUpload = require('../models/Urbanfarmerupload');
 
@@ -40,19 +40,110 @@ router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
         }}
       ])
 
-      console.log("Poultry collections", totalPoultry)
-      console.log("Hort collections", totalHort)
-      console.log("Dairy collections", totalDairy)
+      // console.log("Poultry collections", totalPoultry)
+      // console.log("Hort collections", totalHort)
+      // console.log("Dairy collections", totalDairy)
 
+          //  BELOW: Dairy Numbers by Ward.
+      let totalDairyByWardM1 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Diary"}, {ward: "Masajja-1"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
 
-      let totalDairyByWard = await UrbanFarmerUpload.aggregate([
+      let totalDairyByWardM2 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Diary"}, {ward: "Masajja-2"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+      
+      let totalDairyByWardM3 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Diary"}, {ward: "Masajja-3"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      let totalDairyByWardM4 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Diary"}, {ward: "Masajja-4"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      //  BELOW: Horticulture Numbers by Ward.
+
+      let totalHortByWardM1 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Horticulture"}, {ward: "Masajja-1"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      let totalHortByWardM2 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Horticulture"}, {ward: "Masajja-2"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+      
+      let totalHortByWardM3 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Horticulture"}, {ward: "Masajja-3"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      let totalHortByWardM4 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Horticulture"}, {ward: "Masajja-4"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      //  BELOW: Poultry Numbers by Ward.
+      let totalPoultryByWardM1 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Poultry"}, {ward: "Masajja-1"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      let totalPoultryByWardM2 = await UrbanFarmerUpload.aggregate([
         { $match: {$and: [{productcategory: "Poultry"}, {ward: "Masajja-2"}] } },
         { $group: { _id: "$all", 
         totalQuantity: { $sum: "$stockbalance" },
         totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
         }}
       ])
-      console.log("This is Total Dairy by Ward: " + totalDairyByWard);
+      
+      let totalPoultryByWardM3 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Poultry"}, {ward: "Masajja-3"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
+      let totalPoultryByWardM4 = await UrbanFarmerUpload.aggregate([
+        { $match: {$and: [{productcategory: "Poultry"}, {ward: "Masajja-4"}] } },
+        { $group: { _id: "$all", 
+        totalQuantity: { $sum: "$stockbalance" },
+        totalCost: { $sum: { $multiply: [ "$unitprice", "$stockbalance" ] } }, 
+        }}
+      ])
+
 
       res.render('dash-ao', {
       farmerOnes:leadFarmers, 
@@ -60,10 +151,23 @@ router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
       totalP:totalPoultry[0], 
       totalH:totalHort[0], 
       totalD:totalDairy[0],
-      totalWardD:totalDairyByWard[0]
+      totalWardD1:totalDairyByWardM1[0],
+      totalWardD2:totalDairyByWardM2[0],
+      totalWardD3:totalDairyByWardM3[0],
+      totalWardD4:totalDairyByWardM4[0],
+      totalWardH1:totalHortByWardM1[0],
+      totalWardH2:totalHortByWardM2[0],
+      totalWardH3:totalHortByWardM3[0],
+      totalWardH4:totalHortByWardM4[0],
+      totalWardP1:totalPoultryByWardM1[0],
+      totalWardP2:totalPoultryByWardM2[0],
+      totalWardP3:totalPoultryByWardM3[0],
+      totalWardP4:totalPoultryByWardM4[0]
+
+
     });
     } catch (error) {
-      res.status(400).send("Sorry there seems to be no Farmer Ones matching your request");
+      res.status(400).send("Sorry! There seems to be no match to your request");
       console.log(error);
     }
   } else {
@@ -82,6 +186,7 @@ router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
 //     console.log(error);
 //   }
 // });
+// NB: the commented out route above was incorporated in the extended route up above it.
 
 // Update Farmer One Details Route
 router.get('/farmerone/update/:id', async (req,res) => {
