@@ -1,16 +1,246 @@
-extends dashlayout
+extends dashlayout-4-dashboards
 block content
-  .container
-        .row
-          .col
-            .divtopmargin
-              h1  Urban Farmer Dashboard
-          .row
-            .col-3.create Create
-              br
-              a(href='/ufarmerupload', target='_blank') Upload Produce
-            .col-3.read Read
-              br
-              a(href='/productlist', target='_blank') View Product list
-            .col-3.update Update
-            .col-3.delete Delete/productlist
+    .container-fluid
+      .row
+        .col-md-12.dash_title
+          nav.navbar.navbar-expand-lg.bg-light
+              .container-fluid
+                a.navbar-brand(href='/index' target='_blank')
+                  img.img2(src='/images/logo.png')
+                  a.nav-link.active(aria-current='page', href='/index' target="_blank") Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                #navbarSupportedContent.collapse.navbar-collapse
+                  ul.navbar-nav.me-auto.mb-2.mb-lg-0
+                    li.nav-item
+                      h4 Urban Farmer Business Page ➨ #{farmerBizName}
+                  .d-flex(role='search')
+                    form(method='POST' action='/logout')
+                      button.btn.btn-outline-success(type='submit') Logout
+        .col-md-3.dash_left 
+          br
+          br
+          img(src='/images/apple-tree.jpg')
+        .col-md-9.dash_right
+          ul#myTab.nav.nav-tabs(role='tablist')
+            li.nav-item.tab(role='presentation')
+              button#home-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#home-tab-pane', type='button', role='tab', aria-controls='home-tab-pane', aria-selected='true') 📜 Product List
+            li.nav-item.tab(role='presentation')
+              button#profile-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#profile-tab-pane', type='button', role='tab', aria-controls='profile-tab-pane', aria-selected='false') 🏕 Approved Product
+            li.nav-item.tab(role='presentation')
+              button#contact-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#contact-tab-pane', type='button', role='tab', aria-controls='contact-tab-pane', aria-selected='false') 📦 Orders
+            li.nav-item.tab(role='presentation')
+              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') 💰 Sales
+            li.nav-item.tab(role='presentation')
+              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') ⏳ My Business
+          #myTabContent.tab-content
+            #home-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='home-tab', tabindex='0')
+              .div-in-tab
+                a(class='button' href='/ufarmerupload' target="_blank") 📤 Upload Product                
+                br
+                br
+                table.table.table-bordered 
+                  thead
+                      tr
+                          th Farmer Name
+                          th Product Category 
+                          th Product Name
+                          th Product Image
+                          th Status
+                          th Availability
+                          th Units in Stock
+                          th Update
+                          th Delete
+                  tbody
+                      if ufProducts.length
+                          each piece in ufProducts
+                              if piece.status == "Pending"
+                                  tr
+                                      td #{urbanFarmerName}   
+                                      //- Notice the difference in the line above resulting from currentUrbanFarmer variable in the uf-routes file. Using #{piece.supplierbizname} as for the other fields below will fill field with the _id due to some setup on the product upload page for the supplierbizname
+                                      td #{piece.productcategory}
+                                      td #{piece.productname}
+                                      td 
+                                          div.imgdivs
+                                              img(src="/"+piece.productimage, alt="Image" width='150px' height="150px") 
+                                      td #{piece.status}
+                                      td #{piece.availability}
+                                      td #{piece.stockbalance}
+                                      td
+                                          a#report-btn-update(href='/produce/update/'+piece._id) Update
+                                      td
+                                          form(method="post" action='/produce/delete')
+                                              input(type="hidden" placeholder="" name="id", value=piece._id)
+                                              button#report-btn-del(type="submit") Delete
+            #profile-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab', tabindex='0')
+              .div-in-tab
+                br
+                table.table.table-bordered 
+                  thead
+                      tr
+                          th Farmer Name
+                          th Product Category 
+                          th Product Name
+                          th Product Image
+                          th Status
+                          th Availability
+                          th Units in Stock
+                          th Update
+                          th Delete
+                  tbody
+                      if ufProducts.length
+                          each piece in ufProducts
+                              if piece.status == "Approved"
+                                  tr
+                                      td #{urbanFarmerName}   
+                                      //- Notice the difference in the line above resulting from urbanFarmerBusinessName variable in the uf-routes file. Using #{piece.supplierbizname} as for the other fields below will fill field with the _id due to some setup on the product upload page for the supplierbizname
+                                      td #{piece.productcategory}
+                                      td #{piece.productname}
+                                      td 
+                                          div.imgdivs
+                                              img(src="/"+piece.productimage, alt="Image" width='150px' height="150px") 
+                                      td #{piece.status}
+                                      td #{piece.availability}
+                                      td #{piece.stockbalance}
+                                      td
+                                          a#report-btn-update(href='/produce/update/'+piece._id) Update
+                                      td
+                                          form(method="post" action='/produce/delete')
+                                              input(type="hidden" placeholder="" name="id", value=piece._id)
+                                              button#report-btn-del(type="submit") Delete
+            #contact-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab', tabindex='0')
+              .div-in-tab
+                br
+                //- table.table.table-bordered 
+                //-     thead
+                //-         tr
+                //-             th Category 
+                //-             th Name
+                //-             th Ward
+                //-             th Image
+                //-             th Availability
+                //-             th Units
+                //-             th Change Availability
+                //-     tbody
+                //-         if wardApprovedGoods.length
+                //-             each item in wardApprovedGoods
+                //-                 if item.status == "Approved"
+                //-                     tr
+                //-                         td #{item.productcategory}
+                //-                         td #{item.productname}
+                //-                         td #{item.ward}
+                //-                         td 
+                //-                             div.imgdivs
+                //-                                 img(src="/"+item.productimage, alt="Image" width='150px' height="150px") 
+                //-                         td #{item.availability}
+                //-                         td #{item.stockbalance}
+                //-                         td
+                //-                             a#report-btn-approve(href='/produce/approve/'+item._id) Reverse Approve
+                //-                         td
+                //-                             form(method="post" action='/produce/delete')
+                //-                                 input(type="hidden" placeholder="" name="id", value=item._id)
+            #disabled-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='disabled-tab', tabindex='0')
+              .div-in-tab
+                <p>Network connection unusually slow. Sorry this may take a couple of days!
+                .loader
+        br
+        br
+        hr
+           //- Accordion Starts here
+        #accordionFlushExample.accordion.accordion-flush
+          .accordion-item
+            h2#flush-headingOne.accordion-header
+              button.accordion-button.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#flush-collapseOne', aria-expanded='false', aria-controls='flush-collapseOne')
+                | Dairy Numbers by Ward
+            #flush-collapseOne.accordion-collapse.collapse(aria-labelledby='flush-headingOne', data-bs-parent='#accordionFlushExample')
+              .accordion-body
+                .container-fluid
+                  .row
+                    .col-md-3.wardbg
+                      hr
+                    //-   h5 🐮 Dairy Massaja 1
+                    //-       h6 Stockbalance (units): #{totalWardD1.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD1.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3
+                    //-   hr
+                    //-   h5 🐮 Dairy Massaja 2
+                    //-       h6 Stockbalance (units): #{totalWardD2.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD2.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3.wardbg
+                    //-   hr
+                    //-   h5 🐮 Dairy Massaja 3
+                    //-       h6 Stockbalance (units): #{totalWardD3.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD3.totalCost)} /=
+                      hr
+                    .col-md-3
+                      hr
+                      //- h5 🐮 Dairy Massaja 4
+                      //-     h6 Stockbalance (units): #{totalWardD4.totalQuantity}
+                      //-     h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardD4.totalCost)} /=
+                      hr
+          .accordion-item
+            h2#flush-headingTwo.accordion-header
+              button.accordion-button.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#flush-collapseTwo', aria-expanded='false', aria-controls='flush-collapseTwo')
+                | Horticulture Numbers by Ward
+            #flush-collapseTwo.accordion-collapse.collapse(aria-labelledby='flush-headingTwo', data-bs-parent='#accordionFlushExample')
+              .accordion-body
+                .container-fluid
+                  .row
+                    .col-md-3.wardbg
+                      hr
+                    //-   h5 🥦 Horticulture Massaja 1
+                    //-       h6 Stockbalance (units): #{totalWardH1.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH1.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3
+                    //-   hr
+                    //-   h5 🥦 Horticulture Massaja 2
+                    //-       h6 Stockbalance (units): #{totalWardH2.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH2.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3.wardbg
+                    //-   hr
+                    //-   h5 🥦 Horticulture Massaja 3
+                    //-       h6 Stockbalance (units): #{totalWardH3.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH3.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3
+                    //-   hr
+                    //-   h5 🥦 Horticulture Massaja 4
+                    //-       h6 Stockbalance (units): #{totalWardH4.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardH4.totalCost)} /=
+                      hr
+          .accordion-item
+            h2#flush-headingThree.accordion-header
+              button.accordion-button.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#flush-collapseThree', aria-expanded='false', aria-controls='flush-collapseThree')
+                | Poultry Numbers by Ward
+            #flush-collapseThree.accordion-collapse.collapse(aria-labelledby='flush-headingThree', data-bs-parent='#accordionFlushExample')
+              .accordion-body
+                .container-fluid
+                  .row 
+                    .col-md-3.wardbg
+                      hr
+                    //-   h5 🐔 Poultry Massaja 1
+                    //-       h6 Stockbalance (units): #{totalWardP1.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP1.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3
+                    //-   hr
+                    //-   h5 🐔 Poultry Massaja 2
+                    //-       h6 Stockbalance (units): #{totalWardP2.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP2.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3.wardbg
+                    //-   hr
+                    //-   h5 🐔 Poultry Massaja 3
+                    //-       h6 Stockbalance (units): #{totalWardP3.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP3.totalCost)} /=
+                    //-   hr
+                    //- .col-md-3
+                    //-   hr
+                    //-   h5 🐔 Poultry Massaja 4
+                    //-       h6 Stockbalance (units): #{totalWardP4.totalQuantity}
+                    //-       h6 Income Estimate: #{new Intl.NumberFormat().format(totalWardP4.totalCost)} /=
+                      hr
+    footer
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa', crossorigin='anonymous')

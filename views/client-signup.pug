@@ -1,0 +1,50 @@
+extends registerlayout
+block content
+    form(action='/registerclient' name='clientsignup' method="POST" onsubmit="return Validate();")
+      .container
+        .row
+          .col
+            .clientregform
+              h3 Welcome! New Account Signup
+              hr
+              .frmelement
+                label(for='role') 
+                input#role.agricofficerinput(type='text', name='role' value='client' hidden=true)
+                br
+                small#roleerr
+              .frmelement
+                label(for='uniquenum') UserName:
+                br
+                input#uniquenum.agricofficerinput(type='text', name='uniquenum')
+                br
+                small#uniquenumerr
+              .frmelement
+                label(for='fouserid') Email: 
+                br
+                input#fouserid.agricofficerinput(type='email', name='email', placeholder='Enter Email')
+                br
+                small#useriderr
+              .frmelement
+                label(for='fo-fname') First Name: 
+                br
+                input#for-fname.agricofficerinput(type='text', name='firstname')
+                small#firstnameerr
+              .frmelement
+                label(for='fo-lname') Last Name:
+                br
+                input#fo-lname.agricofficerinput(type='text', name='lastname')
+                small#lastnameerr
+              .frmelement
+                label(for='phoneno') &#x1F4DE;Phone Number:
+                br
+                input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno', onblur='checkPhone()')
+              .frmelement
+                label(for='password') Password: 
+                br
+                input#password.agricofficerinput(type='password', name='password', onblur='checkpassWord()')
+                br
+                small#passworderr
+              .frmelement
+                input#frm-btn-ao(type='submit', value='Sign up      📝')
+                br
+    script(src='/js/validateform.js')

@@ -1,0 +1,62 @@
+extends registerlayout
+block content
+    form(action='/myorders' name='clientsignup' method="POST" onsubmit="return Validate()")
+      .container
+        .row
+          .col
+            .clientregform
+              h3 Order Form
+              hr
+              .frmelement
+                label(for='frmDate') Order date:
+                br
+                input#frmDate.agricofficerinput(type='text', name='orderdate', value='', readonly='')
+              .frmelement
+                label(for='orderno') Order No:
+                br
+                input#orderno.agricofficerinput(type='text', name='orderno', value='', readonly='')
+              .frmelement
+                label(for='productname') Product Name: 
+                br
+                input#productname.agricofficerinput(type='text', name='productname')
+              .frmelement
+                label(for='unitprice') Unit Price (UGX):
+                br
+                input#unitprice.numfieldinput(type='number', name='unitprice' placeholder=10)
+              .frmelement
+                label(for='quantity') Quantity (No. of units):
+                br
+                input#quantity.numfieldinput(type='number', name='quantity' placeholder=20)
+              .frmelement
+                label(for='fo-fname') First Name: 
+                br
+                input#for-fname.agricofficerinput(type='text', name='firstname')
+                small#firstnameerr
+              .frmelement
+                label(for='fo-lname') Last Name:
+                br
+                input#fo-lname.agricofficerinput(type='text', name='lastname')
+                small#lastnameerr
+              .frmelement
+                label(for='phoneno') &#x1F4DE;Phone Number:
+                br
+                input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno', onblur='checkPhone()')
+              .frmelement
+                label(for='supplierid') Supplier Email:
+                br
+                select#supplierid.agricofficerinput(name='email')
+                  if currentUser
+                    option(value=currentUser._id) #{currentUser.email}
+              .frmelement
+                label(for='invoicetotal') Total Cost: (UGX):
+                br
+                input#invoicetotal.numfieldinput(type='text', name='invoicetotal', value='', readonly='')
+              .frmelement
+                input#frm-btn-ao(type='submit', value='Place Order')
+                br
+    script(src='/js/validateform.js')
+    script(src='/js/date.js')
+    script(src='/js/random-number.js')
+    script(src='/js/invoicetotal.js')
+
+

@@ -1,0 +1,116 @@
+extends registerlayout
+block content
+    form#signup.form(action='/produce/orders/?id='+product._id name='productorder' method='POST')
+      .container
+        .row.regfrmborderao
+          .col-md-12
+              h3 Order Form 
+              hr
+          .col-md-6 
+              .frmelement
+                label(for='label')
+                br
+                input#label.agricofficerinput(type='text' name='order' value='order' readonly='')
+              .frmelement
+                label(for='frmDate') Order date:
+                br
+                input#frmDate.agricofficerinput(type='text' name='orderdate' value='' readonly='')
+              .frmelement
+                label(for='orderno') Order No:
+                br
+                input#orderno.agricofficerinput(type='text' name='orderno' value='' readonly='')
+              .frmelement
+                label(for='productname') Product Name:
+                br
+                select.agricofficerinput(name='productname')
+                  option(value="Minced Chicken 2Kg" selected = product.productname === "Minced Chicken 2Kg") Minced Chicken 2Kg
+                  option(value="Chicken Wings 2Kg" selected = product.productname === 'Chicken Wings 2Kg') Chicken Wings 2Kg
+                  option(value="Chicken Wings 1Kg" selected = product.productname === 'Chicken Wings 1Kg') Chicken Wings 1Kg
+                  option(value="Drumsticks 2Kg" selected = product.productname === 'Drumsticks 2Kg') Drumsticks 2Kg
+                  option(value="Drumsticks 1Kg" selected = product.productname === 'Drumsticks 1Kg') Drumsticks 1Kg
+                  option(value="Chicken 3Kg" selected = product.productname === 'Chicken 3Kg') Chicken 3Kg
+                  option(value="Chicken Sausages 2Kg" selected = product.productname === 'Chicken Sausages 2Kg') Chicken Sausages 2Kg
+                  option(value="Chicken Sausages 1Kg" selected = product.productname === 'Chicken Sausages 1Kg') Chicken Sausages 1Kg
+                  option(value="Minced Chicken 1Kg" selected = product.productname === 'Minced Chicken 1Kg') Minced Chicken 1Kg
+                  option(value="Passion Fruit 1Kg" selected = product.productname === 'Passion Fruit 1Kg') Passion Fruit 1Kg
+                  option(value="Passion Fruit 2Kg" selected = product.productname === 'Passion Fruit 2Kg') Passion Fruit 2Kg
+                  option(value="Lettuce 250g" selected = product.productname === 'Lettuce 250g') Lettuce 250g
+                  option(value="Lettuce 500g" selected = product.productname === 'Lettuce 500g') Lettuce 500g
+                  option(value="Chicken Liver 2Kg" selected = product.productname === 'Chicken Liver 2Kg') Chicken Liver 2Kg
+                  option(value="Chicken Liver 1Kg" selected = product.productname === 'Chicken Liver 1Kg') Chicken Liver 1Kg
+                  option(value="Eggs tray" selected = product.productname === 'Eggs tray') Eggs tray
+                  option(value="Lettuce 500g" selected = product.productname === 'Lettuce 500g') Lettuce 500g
+                  option(value="Lettuce 1Kg" selected = product.productname === 'Lettuce 1Kg') Lettuce 1Kg
+                  option(value="Cheese Unsalted 500g" selected = product.productname === 'Cheese Unsalted 500g') Cheese Unsalted 500g
+                  option(value="Cheese Unsalted 1Kg" selected = product.productname === 'Cheese Unsalted 1Kg') Cheese Unsalted 1Kg
+                  option(value="Ghee Unsalted 500g" selected = product.productname === 'Ghee Unsalted 500g') Ghee Unsalted 500g
+                  option(value="Ghee Unsalted 1Kg" selected = product.productname === 'Ghee Unsalted 1Kg') Ghee Unsalted 1Kg
+                  option(value="Organic Sour Cream 250g" selected = product.productname === 'Organic Sour Cream 250g') Organic Sour Cream 250g
+                  option(value="Chicken Gizzards 1Kg" selected = product.productname === 'Chicken Gizzards 1Kg') Chicken Gizzards 1Kg
+                  option(value="Chicken Gizzards 2Kg" selected = product.productname === 'Chicken Gizzards 2Kg') Chicken Gizzards 2Kg
+                  option(value="Cauliflower 500g" selected = product.productname === 'Cauliflower 500g') Cauliflower 500g
+                  option(value="Cauliflower 250g" selected = product.productname === 'Cauliflower 250g') Cauliflower 250g
+                  option(value="Broccoli 1Kg" selected = product.productname === 'Broccoli 1Kg') Broccoli 1Kg
+                  option(value="Broccoli 500g" selected = product.productname === 'Broccoli 500g') Broccoli 500g
+                  option(value="Broccoli 250g" selected = product.productname === 'Broccoli 250g') Broccoli 250g
+                  option(value="Cheese Salted 500g" selected = product.productname === 'Cheese Salted 500g') Cheese Salted 500g
+                  option(value="Yoghurt 1l" selected = product.productname === 'Yoghurt 1l') Yoghurt 1l
+                  option(value="Milk 1l" selected = product.productname === 'Milk 1l') Milk 1l
+                  option(value="Milk 0.5l" selected = product.productname === 'Milk 0.5l') Milk 0.5l
+                  option(value="Spinach 250g" selected = product.productname === 'Spinach 250g') Spinach 250g
+              .frmelement
+                label(for='supplierbizname') Supplier Name: 
+                br
+                input#supplierbizname.agricofficerinput(type='text' name='supplierbizname' value=product.supplierbizname)
+              //- .frmelement
+              //-   label(for='phoneno') Supplier Contact: 
+              //-   br
+              //-   input#phoneno.agricofficerinput(type='text' name='phoneno' value=product.phoneno)
+              .frmelement
+                label(for='unitprice') Unit Price (UGX):
+                br
+                input#price.agricofficerinput(type='number' name='unitprice' value=product.unitprice)
+              .frmelement
+                label(for='quantity') Quantity (No. of units):
+                br
+                input#quantity.agricofficerinput(type='number' name='quantity')
+          .col-md-6   
+              br
+              .frmelement
+                label(for='deliverymode') Delivery Mode:
+                br
+                input#deliverymode.agricofficerinput(type='text' name='deliverymode' value=product.deliverymode)
+              .frmelement
+                label Mode of Payment:
+                br
+                input#deliverymode.agricofficerinput(type='text' name='pytmode' value=product.pytmode)
+              .frmelement
+                label(for='fo-fname') Name: 
+                br
+                input#for-fname.agricofficerinput(type='text' name='firstname' placeholder='Your Name')
+                small#firstnameerr
+              .frmelement
+                label(for='phonenum') &#x1F4DE;Phone Number:
+                br
+                input#phonenum.agricofficerinput(type='text' placeholder='07xxXXXXXX' name='phonenum' onblur='checkPhone()')
+              .frmelement
+                label(for='invoicetotal') Total Cost: (UGX):
+                br
+                input#invoicetotal.agricofficerinput(type='text' name='invoicetotal' value='' readonly='')
+              .frmelement
+                label(for='productname') Order status:
+                br
+                select.agricofficerinput(name='orderstatus')
+                  option(value="Pending") Pending
+                  option(value="Delivered") Delivered
+              .frmelement
+                input.my-btn-primary.btn(type='submit' value='Place Order')
+                a(href='/index') 
+                  button.my-btn-primary.btn(type='button' value='Cancel') Cancel
+
+    script(src='bootstrap-js/js/bootstrap.bundle.js')
+    script(src='/js/validateform.js')
+    script(src='/js/date.js')
+    script(src='/js/random-number.js')
+    script(src='/js/invoicetotal.js')
+    

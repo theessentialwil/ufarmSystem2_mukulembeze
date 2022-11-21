@@ -11,7 +11,7 @@ block content
                 #navbarSupportedContent.collapse.navbar-collapse
                   ul.navbar-nav.me-auto.mb-2.mb-lg-0
                     li.nav-item
-                      h4 Agricultural Officer Administration
+                      h4 #{wardSpec} 🌽 Farmer One Administration ► #{wardBoss}
                   .d-flex(role='search')
                     form(method='POST' action='/logout')
                       button.btn.btn-outline-success(type='submit') Logout
@@ -34,80 +34,116 @@ block content
         .col-md-9.dash_right
           ul#myTab.nav.nav-tabs(role='tablist')
             li.nav-item.tab(role='presentation')
-              button#home-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#home-tab-pane', type='button', role='tab', aria-controls='home-tab-pane', aria-selected='true') 📗 Current Farmer Ones
+              button#home-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#home-tab-pane', type='button', role='tab', aria-controls='home-tab-pane', aria-selected='true') 📗 Ward Urban Farmers
             li.nav-item.tab(role='presentation')
-              button#profile-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#profile-tab-pane', type='button', role='tab', aria-controls='profile-tab-pane', aria-selected='false') 📘 All Farmer Ones
+              button#profile-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#profile-tab-pane', type='button', role='tab', aria-controls='profile-tab-pane', aria-selected='false') ▓ Product List
             li.nav-item.tab(role='presentation')
-              button#contact-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#contact-tab-pane', type='button', role='tab', aria-controls='contact-tab-pane', aria-selected='false') Sales
+              button#contact-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#contact-tab-pane', type='button', role='tab', aria-controls='contact-tab-pane', aria-selected='false') ✅ Approved Product
             li.nav-item.tab(role='presentation')
-              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') More
+              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') 🔒 Sales
+            li.nav-item.tab(role='presentation')
+              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') ⏳ My Business
           #myTabContent.tab-content
             #home-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='home-tab', tabindex='0')
               .div-in-tab
-                a(class='button' href='/registerfo' target="_blank") ✍️Register New Farmer One
+                a(class='button' href='/ufregister' target="_blank") ✍️Register Urban Farmer                
                 br
                 br
                 table.table.table-bordered 
                     thead
                         tr
+                            th Role
                             th Ward 
                             th First Name 
                             th Last Name
-                            th Sex
-                            th Date of Reg
-                            th Status
+                            th Supplier Biz Name
                             th Activities
                             th Contact 
                             th Update
+                            th Delete
                     tbody
-                        if seniors.length
-                            each senior in seniors
+                        if masajjaOneUrbanFarmers.length
+                            each ubfarmer in masajjaOneUrbanFarmers
                                 tr
-                                    td #{senior.ward}
-                                    td #{senior.firstname}
-                                    td #{senior.lastname}
-                                    td #{senior.sex}
-                                    td #{senior.DateOfReg}
-                                    td #{senior.status}
-                                    td #{senior.activities}
-                                    td #{senior.phoneno}
+                                    td #{ubfarmer.role}
+                                    td #{ubfarmer.ward}
+                                    td #{ubfarmer.firstname}
+                                    td #{ubfarmer.lastname}
+                                    td #{ubfarmer.supplierbizname}
+                                    td #{ubfarmer.activities}
+                                    td #{ubfarmer.phoneno}
                                     td
-                                        a#report-btn-update(href='/farmerone/update/'+senior._id) Update
+                                        a#report-btn-update(href='/urbanfarmer/update/'+ubfarmer._id) Update
+                                    td 
+                                        form(method="post" action='/urbanfarmer/delete')
+                                          input(type="hidden" placeholder="" name="id", value=ubfarmer._id)
+                                          button#report-btn-del(type="submit") Delete
             #profile-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab', tabindex='0')
               .div-in-tab
-                a(class='button' href='/registerfo' target="_blank") ✍️Register New Farmer One
                 br
+                table.table.table-bordered 
+                  thead
+                      tr
+                          th Product Category 
+                          th Product Name
+                          th Ward
+                          th Product Image
+                          th Status
+                          th Availability
+                          th Units
+                          th Change Status
+                          th Delete
+                  tbody
+                      if mineGoods.length
+                          each good in mineGoods
+                              if good.status == "Pending"
+                                  tr
+                                      td #{good.productcategory}
+                                      td #{good.productname}
+                                      td #{good.ward}
+                                      td 
+                                          div.imgdivs
+                                              img(src="/"+good.productimage, alt="Image" width='150px' height="150px") 
+                                      td #{good.status}
+                                      td #{good.availability}
+                                      td #{good.stockbalance}
+                                      td
+                                          a#report-btn-approve(href='/produce/approve/'+good._id) Approve
+                                      td
+                                          form(method="post" action='/produce/delete')
+                                              input(type="hidden" placeholder="" name="id", value=good._id)
+                                              button#report-btn-del(type="submit") Delete
+            #contact-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab', tabindex='0')
+              .div-in-tab
                 br
                 table.table.table-bordered 
                     thead
                         tr
-                            th Ward 
-                            th First Name 
-                            th Last Name
-                            th Sex
-                            th Date of Reg
-                            th Status
-                            th Activities
-                            th Contact 
-                            th Update
+                            th Category 
+                            th Name
+                            th Ward
+                            th Image
+                            th Availability
+                            th Units
+                            th Change Availability
                     tbody
-                        if farmerOnes.length
-                            each farmerone in farmerOnes
-                                tr
-                                    td #{farmerone.ward}
-                                    td #{farmerone.firstname}
-                                    td #{farmerone.lastname}
-                                    td #{farmerone.sex}
-                                    td #{farmerone.DateOfReg}
-                                    td #{farmerone.status}
-                                    td #{farmerone.activities}
-                                    td #{farmerone.phoneno}
-                                    td
-                                        a#report-btn-update(href='/farmerone/update/'+farmerone._id) Update
-            #contact-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab', tabindex='0')
-              .div-in-tab
-                <p>Populating Sales analytics.
-                .loader
+                        if wardApprovedGoods.length
+                            each item in wardApprovedGoods
+                                if item.status == "Approved"
+                                    tr
+                                        td #{item.productcategory}
+                                        td #{item.productname}
+                                        td #{item.ward}
+                                        td 
+                                            div.imgdivs
+                                                img(src="/"+item.productimage, alt="Image" width='150px' height="150px") 
+                                        td #{item.availability}
+                                        td #{item.stockbalance}
+                                        td
+                                            a#report-btn-approve(href='/produce/approve/'+item._id) Reverse Approve
+                                        td
+                                            form(method="post" action='/produce/delete')
+                                                input(type="hidden" placeholder="" name="id", value=item._id)
             #disabled-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='disabled-tab', tabindex='0')
               .div-in-tab
                 <p>Network connection unusually slow. Sorry this may take a couple of days!

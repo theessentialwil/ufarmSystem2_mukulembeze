@@ -6,7 +6,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new mongoose.Schema({
   role: {
     type: String,
-    required: true
+    // required: true
   },
   uniquenum: {
     type: String,
@@ -25,11 +25,11 @@ const userSchema = new mongoose.Schema({
   },
   sex:{
     type: String,
-    required: true
+    // required: true
   },
   nin: {
     type: String,
-    required: true,
+    // required: true,
     trim:true
   },
   phoneno: {

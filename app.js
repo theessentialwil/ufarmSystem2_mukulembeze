@@ -12,7 +12,7 @@ const expressSession = require('express-session')({
   }); 
 // Import the User Model or Schema 
 const Registration = require('./models/User');
-const UrbanFarmerUpload = require('./models/Urbanfarmerupload')
+const UrbanFarmerUpload = require('./models/Urbanfarmerupload');
 
 // Importing Route files: see comments.txt
 const registerRoutes = require('./routes/registerRoutes');

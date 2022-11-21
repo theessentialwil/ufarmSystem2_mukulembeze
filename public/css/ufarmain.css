@@ -40,6 +40,7 @@ width:  30% !important;
 .mycardimensions {
     width: 11.3rem;
     margin: 10px;
+    height: 300px;
 }
 
 .card-title {
@@ -138,7 +139,7 @@ label {
 
 .agricofficerinput:hover {
     box-shadow: none;
-    background-color: whitesmoke;
+    background-color: rgb(235, 240, 250);
 }
 
 #frm-btn-ao {
@@ -167,7 +168,7 @@ label {
 
 .select-drpdwn:hover {
     box-shadow: none;
-    background-color: whitesmoke;
+    background-color: rgb(235, 240, 250);
 }
 
 .textarea1 {
@@ -179,6 +180,7 @@ label {
 }
 
 .textarea1:hover {
+    background-color: rgb(235, 240, 250);
     box-shadow: 3px 5px 5px 3px slategrey;
 }
 
@@ -198,7 +200,7 @@ label {
     box-shadow: 10px 20px 20px 10px slategrey;
     border-radius: 0 20px 0 20px;
     padding-left: 3rem;
-    background-image: url("/images/dbg1.webp");
+    /* background-image: url("/images/dbg1.webp"); */
 
 }
 .regfrmborderao {
@@ -210,8 +212,34 @@ label {
     border-radius: 0 20px 0 20px;
     padding-left: 3rem;
     width: 750px;
-    background-image: url("/images/dbg1.webp");
+    /* background-image: url("/images/dbg1.webp"); */
 }
+
+.clientregform {
+    /* margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto; */
+    border: 1 solid rgb(92, 90, 90);
+    /* box-shadow: 10px 20px 20px 10px slategrey; */
+    border-radius: 0 20px 0 20px;
+    padding: 5px 5px;
+    width: 400px;
+    /* background-image: url("/images/dbg1.webp"); */
+    text-align: center;
+} 
+
+.confirmpg {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1 solid rgb(92, 90, 90);
+  box-shadow: 10px 20px 20px 10px slategrey;
+  border-radius: 0 20px 0 20px;
+  padding: 5px 5px;
+  width: 400px;
+  text-align: center;
+}
+
 #frmDate {
     width: 300px;
     background-color: rgba(233, 229, 229, 0.814);
@@ -229,6 +257,10 @@ label {
 .frmelement {
     margin-bottom: 1rem;
 }
+.frmelement2 {
+ margin: auto;
+}
+
 
 .loginfrmdiv {
     padding: 0;
@@ -342,7 +374,7 @@ label {
 }
 
 #report-btn-del {
-    background-color: rgb(4, 6, 59);
+    background-color: rgb(56, 104, 143);
     color: white;
     width: 80px;
     height: 30px;
@@ -356,7 +388,7 @@ label {
 }
 
 #report-btn-update {
-    background-color: rgb(4, 6, 59);
+    background-color: rgb(56, 104, 143);
     color: white;
     width: 80px;
     height: 30px;
@@ -370,7 +402,7 @@ label {
 }
 
 #report-btn-approve {
-    background-color: rgb(4, 6, 59);
+    background-color: rgb(56, 104, 143);
     color: white;
     width: 100px;
     height: 30px;
@@ -570,3 +602,42 @@ a {
     background-color: #e7f1ff;
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125)
   }
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.nav-link {
+    display: block;
+    /* padding: .5rem 1rem; */
+    color: #01040a;
+    text-decoration: none;
+    text-align: left;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
+  }
+
+  .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: rgb(56, 104, 143);
+}
+
+myh6 {
+    background-color: rgb(2, 137, 247);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card-body {
+    flex: 1 1;
+    padding: 1rem 1rem;
+  }
+
+.cardheight {
+    height: 100px;
+}

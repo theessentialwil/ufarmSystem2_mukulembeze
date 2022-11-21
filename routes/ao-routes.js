@@ -146,25 +146,23 @@ router.get('/ao-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
 
 
       res.render('dash-ao', {
-      farmerOnes:leadFarmers, 
-      seniors:appointees, 
-      totalP:totalPoultry[0], 
-      totalH:totalHort[0], 
-      totalD:totalDairy[0],
-      totalWardD1:totalDairyByWardM1[0],
-      totalWardD2:totalDairyByWardM2[0],
-      totalWardD3:totalDairyByWardM3[0],
-      totalWardD4:totalDairyByWardM4[0],
-      totalWardH1:totalHortByWardM1[0],
-      totalWardH2:totalHortByWardM2[0],
-      totalWardH3:totalHortByWardM3[0],
-      totalWardH4:totalHortByWardM4[0],
-      totalWardP1:totalPoultryByWardM1[0],
-      totalWardP2:totalPoultryByWardM2[0],
-      totalWardP3:totalPoultryByWardM3[0],
-      totalWardP4:totalPoultryByWardM4[0]
-
-
+        farmerOnes:leadFarmers, 
+        seniors:appointees, 
+        totalP:totalPoultry[0], 
+        totalH:totalHort[0], 
+        totalD:totalDairy[0],
+        totalWardD1:totalDairyByWardM1[0],
+        totalWardD2:totalDairyByWardM2[0],
+        totalWardD3:totalDairyByWardM3[0],
+        totalWardD4:totalDairyByWardM4[0],
+        totalWardH1:totalHortByWardM1[0],
+        totalWardH2:totalHortByWardM2[0],
+        totalWardH3:totalHortByWardM3[0],
+        totalWardH4:totalHortByWardM4[0],
+        totalWardP1:totalPoultryByWardM1[0],
+        totalWardP2:totalPoultryByWardM2[0],
+        totalWardP3:totalPoultryByWardM3[0],
+        totalWardP4:totalPoultryByWardM4[0]
     });
     } catch (error) {
       res.status(400).send("Sorry! There seems to be no match to your request");

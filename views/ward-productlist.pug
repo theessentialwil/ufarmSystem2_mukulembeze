@@ -1,0 +1,50 @@
+extends layout2
+block content
+    header.card-header
+        br
+        h2 Product List
+    br
+    nav
+    //- #nav-tab.nav.nav-tabs(role='tablist')
+        //- a#nav-profile-tab.nav-item.nav-link(href='/registerFarmerOne') Register FarmerOne
+    #nav-tabContent.tab-content
+    br
+    table.table.table-bordered 
+        thead
+            tr
+                th Product Category 
+                th Product Name
+                th Product Type
+                th Product Image
+                th Status
+                th Availability
+                th Update
+                th Change Status
+                th Delete
+        tbody
+            if wardGoods.length
+                each good in wardGoods
+                    if good.status == "Pending"
+                        tr
+                            td #{good.productcategory}
+                            td #{good.productname}
+                            td #{good.producttype}
+                            td 
+                                div.imgdivs
+                                    img(src="/"+good.productimage, alt="Image" width='150px' height="150px") 
+                            td #{good.status}
+                            td #{good.availability}
+                            td
+                                a#report-btn-update(href='/produce/update/'+good._id) Update
+                            td
+                                a#report-btn-approve(href='/produce/approve/'+good._id) Approve
+                            td
+                                form(method="post" action='/produce/delete')
+                                    input(type="hidden" placeholder="" name="id", value=good._id)
+                                    button#report-btn-del(type="submit") Delete
+        div.form-row
+            div.col.form-group
+                a(class='button' href='/agricOfficerDash') 
+
+block footer
+    div.col-md-12 ©️ 2022 UFARM Masajja Tukolerewamu Incorporated

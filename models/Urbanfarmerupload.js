@@ -2,35 +2,34 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
 supplierbizname: {
-  type: mongoose.Schema.Types.ObjectId,
+  type: mongoose.Schema.Types.String,
   ref: 'Registration'
 },
 email: {
   type: mongoose.Schema.Types.ObjectId,
-  ref: 'Registration',
-  required: true
+  ref: 'Registration'
 },
+// phoneno: {
+//   type: mongoose.Schema.Types.ObjectId,
+//   ref: 'Registration'
+// },
 ward: {
   type: String
 },
 productcode: {
   type: String,
-  required: true
 },
 productcategory: {
   type: String,
-  required: true
 },
 productname: {
   type: String,
-  required: true
 },
 availability:  {
   type: String
 },
 producttype: {
   type: String,
-  required: true
 },
 stockbalance: {
   type: Number,
@@ -56,6 +55,32 @@ status: {
   default: "Pending",
   enum: ['Pending', 'Approved']
 },
+orderdate: {
+  type: String
+},
+orderno: {
+ type: String
+},
+quantity: {
+  type: Number,
+},
+firstname: {
+  type: String,
+  trim: true
+},
+phonenum: {
+  type: String,
+  trim: true
+},
+invoicetotal: {
+  type: String
+  // default: 0
+},
+orderstatus: {
+  type: String,
+  default: "Pending",
+  enum: ['Pending', 'Delivered']
+}
 // availability: {
 //   type: String, 
 //   default: "available",

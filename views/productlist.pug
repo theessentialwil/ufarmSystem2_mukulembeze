@@ -9,42 +9,19 @@ block content
         //- a#nav-profile-tab.nav-item.nav-link(href='/registerFarmerOne') Register FarmerOne
     #nav-tabContent.tab-content
     br
-    table.table.table-bordered 
-        thead
-            tr
-                th Product Category 
-                th Product Name
-                th Product Type
-                th Product Image
-                th Status
-                th Availability
-                th Update
-                th Change Status
-                th Delete
-        tbody
-            if myproducts.length
-                each product in myproducts
-                    if product.status == "Pending"
-                        tr
-                            td #{product.productcategory}
-                            td #{product.productname}
-                            td #{product.producttype}
-                            td 
-                                div.imgdivs
-                                    img(src="/"+product.productimage, alt="Image" width='150px' height="150px") 
-                            td #{product.status}
-                            td #{product.availability}
-                            td
-                                a#report-btn-update(href='/produce/update/'+product._id) Update
-                            td
-                                a#report-btn-approve(href='/produce/approve/'+product._id) Approve
-                            td
-                                form(method="post" action='/produce/delete')
-                                    input(type="hidden" placeholder="" name="id", value=product._id)
-                                    button#report-btn-del(type="submit") Delete
-        div.form-row
-            div.col.form-group
-                a(class='button' href='/agricOfficerDash') 
+    .col-md-8(style='')
+        if poultryGoods.length
+            each product in poultryGoods
+                if product.status == "Pending"
+                    .card.mycardimensions
+                        img(src="/"+product.productimage, alt="Image" width='150px' height="150px") 
+                        .card-body
+                            h6.card-title
+                                p.card-text
+                                Name #{product.productname}
+                                br
+                                UGX UGX #{product.unitprice}
+                                a.btn.btn-primary.my-btn-primary.my-btn(href='#') Order
 
 block footer
     div.col-md-12 ©️ 2022 UFARM Masajja Tukolerewamu Incorporated
