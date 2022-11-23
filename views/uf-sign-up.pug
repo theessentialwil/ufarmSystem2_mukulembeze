@@ -31,11 +31,13 @@ block content
               label(for='supplierbizname') Supplier Business Name: 
               br
               input#supplierbizname.agricofficerinput(type='text', name='supplierbizname')
+              br
+              small#suppliernameerr
             .frmelement
               label(for='fo-ward') Ward: 
               br
               select#fo-ward.select-drpdwn(name='ward')
-                option(value='Masajja-1')
+                option(value='')
                 option(value='Masajja-1') Masajja 1
                 option(value='Masajja-2') Masajja 2
                 option(value='Masajja-3') Masajja 3
@@ -50,6 +52,8 @@ block content
                 option(value='Diary') &#x1F404;Dairy
                 option(value='Horticulture') &#x1F34F;Horticulture
                 option(value='Poultry') &#x1F414;Poultry
+              br
+              small#activitieserr  
         .col-md-4
             .frmelement
               label(for='fo-fname') First Name: 
@@ -80,20 +84,26 @@ block content
               label(for='nin') NIN:
               br
               input#nin.agricofficerinput(type='text', name='nin')
+              br
+              small#ninerr
             .frmelement
               label(for='phoneno') &#x1F4DE;Phone Number:
               br
               input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno')
+              br
+              small#phonenoerr
             .frmelement
               label(for='email') Email: 
               br
               input#email.agricofficerinput(type='email', name='email', placeholder='Enter Email')
               br
-              small#useriderr
+              small#emailerr
             .frmelement
               label(for='farmer-one-pwd') Password: 
               br
               input.agricofficerinput(type='password', name='password')
+              br
+              small#passworderr
             .frmelement
               label(for='frmDate') Date of Registration:
               br
@@ -110,4 +120,4 @@ block content
     footer
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa', crossorigin='anonymous')
     script(src='/js/date.js')
-    script(src='/js/validateform.js')
+    //- script(src='/js/validateform.js')

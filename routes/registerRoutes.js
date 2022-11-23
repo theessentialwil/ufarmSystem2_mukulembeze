@@ -19,14 +19,37 @@ router.get('/links', (req,res) => {
   // res.render('index2');
 // });
 
-// home page rout Returning Approved lists of Products by category in the different tabs
+// home page route Returning Approved lists of Products by category in the different tabs
 router.get('/index', async (req,res) => {
   try {
     let saleDairy = await UrbanFarmerUpload.find({productcategory: 'Diary'}).sort({$natural:-1});
     let saleHorticulture = await UrbanFarmerUpload.find({productcategory: 'Horticulture'}).sort({$natural:-1});
     let salePoultry = await UrbanFarmerUpload.find({productcategory: 'Poultry'}).sort({$natural:-1});
 
+    res.render('index', {
+      dairyGoods:saleDairy,
+      horticultureGoods:saleHorticulture,
+      poultryGoods:salePoultry
+      });
+
+    // console.log()
+  } catch (error) {
+    res.status(400).send("Sorry we are fresh out of dairy products right now.");
+    console.log(error);
+  }
+});
+
+// Index Dash for when logged in
+router.get('/indexdash', async (req,res) => {
+  try {
+    req.session.user = req.user;
+    let currentUser = req.user.firstname;
+    let saleDairy = await UrbanFarmerUpload.find({productcategory: 'Diary'}).sort({$natural:-1});
+    let saleHorticulture = await UrbanFarmerUpload.find({productcategory: 'Horticulture'}).sort({$natural:-1});
+    let salePoultry = await UrbanFarmerUpload.find({productcategory: 'Poultry'}).sort({$natural:-1});
+
     res.render('index2', {
+      userNow:currentUser,
       dairyGoods:saleDairy,
       horticultureGoods:saleHorticulture,
       poultryGoods:salePoultry
@@ -108,7 +131,7 @@ router.post("/ufregister", async (req, res) => {
         if (error) {
           throw error
         }
-        res.redirect('/login');
+        res.redirect('/fo-area');
       });
     }
   } catch (error) {

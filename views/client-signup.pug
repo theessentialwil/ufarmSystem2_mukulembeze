@@ -21,23 +21,27 @@ block content
               .frmelement
                 label(for='fouserid') Email: 
                 br
-                input#fouserid.agricofficerinput(type='email', name='email', placeholder='Enter Email')
+                input#email.agricofficerinput(type='email', name='email', placeholder='Enter Email')
                 br
-                small#useriderr
+                small#emailerr
               .frmelement
                 label(for='fo-fname') First Name: 
                 br
                 input#for-fname.agricofficerinput(type='text', name='firstname')
+                br
                 small#firstnameerr
               .frmelement
                 label(for='fo-lname') Last Name:
                 br
                 input#fo-lname.agricofficerinput(type='text', name='lastname')
+                br
                 small#lastnameerr
               .frmelement
                 label(for='phoneno') &#x1F4DE;Phone Number:
                 br
                 input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno', onblur='checkPhone()')
+                br
+                small#phonenoerr
               .frmelement
                 label(for='password') Password: 
                 br
@@ -47,4 +51,4 @@ block content
               .frmelement
                 input#frm-btn-ao(type='submit', value='Sign up      📝')
                 br
-    script(src='/js/validateform.js')
+    //- script(src='/js/validateform.js')

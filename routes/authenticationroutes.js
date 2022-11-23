@@ -17,7 +17,7 @@ router.post("/login", passport.authenticate("local", { failureRedirect: "/login"
   } else if (req.user.role == 'urbanfarmer') {
         res.redirect('/uf-area');
   } else if (req.user.role == 'client') {
-    res.redirect('/index');
+    res.redirect('/indexdash');
   } else {
     res.send('Sorry either your session has expired or you are not a registered user.')
   }

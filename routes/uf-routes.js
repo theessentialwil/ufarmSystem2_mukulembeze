@@ -35,15 +35,22 @@ router.get('/uf-area', connectEnsureLogin.ensureLoggedIn(), async (req, res) => 
   req.session.user = req.user;
   let currentUrbanFarmer = req.user.firstname + ' ' + req.user.lastname;
   let urbanFarmerBusinessName = req.user.supplierbizname;                               // Because biz name is stored as _id this line helps be able to retrieve it for use in the dash-uf.pug
-  // let currentUfBizName = req.user.supplierbizname
+  
   if (req.user.role == 'urbanfarmer') {
     try {
       let personalProductList = await UrbanFarmerUpload.find({email: req.user._id}).sort({$natural:-1});            // This fetches specific urban farmer products
-    
+      
+      // The two lines below ensure that a specific urban farmer or supplierbizname's orders are got for display on their Urban Farmer Dash when they log in.
+      let clientOrders = await UrbanFarmerUpload.find({orderstatus: 'Pending', supplierbizname: req.user.supplierbizname}).sort({$natural:-1});
+      let clientOrdersDelivered = await UrbanFarmerUpload.find({orderstatus: 'Delivered', supplierbizname: req.user.supplierbizname}).sort({$natural:-1});
+
+
     res.render('dash-uf', {
       urbanFarmerName:currentUrbanFarmer,
       ufProducts:personalProductList,
-      farmerBizName:urbanFarmerBusinessName
+      farmerBizName:urbanFarmerBusinessName,
+      orders:clientOrders,
+      ordersDelivered:clientOrdersDelivered
     });
 
   }  catch (error) {
@@ -170,6 +177,25 @@ router.get('/orderConfirmation', (req,res) => {
     res.render('orderconfirm')
     });
 
+    // Order Status Update Route
+router.get('/produce/orderstatus/:id', async (req,res) => {
+  try {
+    const updateOrder = await UrbanFarmerUpload.findOne({_id:req.params.id})
+    res.render('orderstatus', {orderedProduct:updateOrder});
+    console.log('Order updated', updateOrder);
+  } catch (error) {
+    res.status(400).send('Sorry order update form failed');
+  }
+});
+
+router.post('/produce/orderstatus', async (req,res) => {
+  try {
+    await UrbanFarmerUpload.findOneAndUpdate({_id:req.query.id}, req.body);
+    res.redirect('/uf-area');
+  } catch (error) {
+    res.status(400).send('Sorry we were unable to update this order');
+  }
+});
 
 
 module.exports = router; 

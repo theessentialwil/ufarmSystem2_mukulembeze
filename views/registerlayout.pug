@@ -14,7 +14,7 @@ html(lang='en')
       .container-fluid
         .row
           .col.row_bg
-            #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride='carousel')
+              //- #carouselExampleDark.carousel.carousel-dark.slide(data-bs-ride='carousel')
               .carousel-inner
                 div.new_top 
                   img(src='/images/logo.png', alt='...' maxwidth='262px' height='114px')
@@ -35,27 +35,55 @@ html(lang='en')
                   div.new-top-nav
                     h5 
                       a.my-new-link(href='/login') LogIn 
+                  .d-flex(role='search')
       #exampleModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
-        .modal-dialog
+        .modal-dialog.clientregform
           .modal-content
             .modal-header
-              h5#exampleModalLabel.modal-title Signup As
+              h5#exampleModalLabel.modal-title Welcome! Create New Account
               button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
             .modal-body
-              form#agric-officer-singin
-                a.my-new-link(href='/registerao') AO Signup &nbsp; &nbsp; &nbsp;
-                br
-                br
-                a.my-new-link(href='/registerfo') FO Signup &nbsp;
-                br
-                br
-                a.my-new-link(href='/ufregister') UF Signup &nbsp; &nbsp; &nbsp;
-                br
-                br
-                a.my-new-link(href='#') New User Signup &nbsp; &nbsp; &nbsp;
-                br
-                br
-                hr
+              form(action='/registerclient' name='clientsignup' method="POST" onsubmit="return Validate();")
+                  .frmelement
+                    label(for='role') 
+                    input#role.agricofficerinput(type='text', name='role' value='client' hidden=true)
+                    br
+                    small#roleerr
+                  .frmelement
+                    label(for='uniquenum') UserName:
+                    br
+                    input#uniquenum.agricofficerinput(type='text', name='uniquenum')
+                    br
+                    small#uniquenumerr
+                  .frmelement
+                    label(for='fouserid') Email: 
+                    br
+                    input#fouserid.agricofficerinput(type='email', name='email', placeholder='Enter Email')
+                    br
+                    small#useriderr
+                  .frmelement
+                    label(for='fo-fname') First Name: 
+                    br
+                    input#for-fname.agricofficerinput(type='text', name='firstname')
+                    small#firstnameerr
+                  .frmelement
+                    label(for='fo-lname') Last Name:
+                    br
+                    input#fo-lname.agricofficerinput(type='text', name='lastname')
+                    small#lastnameerr
+                  .frmelement
+                    label(for='phoneno') &#x1F4DE;Phone Number:
+                    br
+                    input#phoneno.agricofficerinput(type='text', placeholder='07xxXXXXXX', name='phoneno', onblur='checkPhone()')
+                  .frmelement
+                    label(for='password') Password: 
+                    br
+                    input#password.agricofficerinput(type='password', name='password', onblur='checkpassWord()')
+                    br
+                    small#passworderr
+                  .frmelement
+                    input#frm-btn-ao(type='submit', value='Sign up      📝')
+                    br
             .modal-footer
               | &copy; Ufarm Masajja Agro Culture Limited                  
     main

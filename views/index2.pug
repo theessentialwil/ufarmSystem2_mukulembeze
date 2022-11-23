@@ -20,21 +20,24 @@ html(lang='en')
                   img(src='/images/logo.png', alt='...' maxwidth='262px' height='114px')
                 div.nav-float
                   div.new-top-nav
-                    h5 
-                      a.my-new-link(href='/index') Home
+                    h6 
+                      a.my-new-link(href='/indexdash') Home
                   div.new-top-nav
-                    h5 
+                    h6 
                       a.my-new-link(href='#') About us 
                   div.new-top-nav
-                    h5 
+                    h6 
                       a.my-new-link(href='#') Contact us 
                   div.new-top-nav
-                    h5 
+                    h6 
                       //- a.my-new-link(href='/login') Signup
                       a.my-new-link(data-bs-toggle='modal', data-bs-target='#exampleModal') Signup 
                   div.new-top-nav
-                    h5 
+                    h6 
                       a.my-new-link(href='/login') LogIn 
+                  div.new-top-nav
+                    h6 Hi😃 You are logged in as #{userNow}
+
                   .d-flex(role='search')
                     form(method='POST' action='/logout')
                       button.btn.btn-outline-success(type='submit') Logout    
@@ -95,12 +98,30 @@ html(lang='en')
             .d-flex.align-items-start
               #v-pills-tab.nav.flex-column.nav-pills(role='tablist', aria-orientation='vertical')
                 h6 Shop by Category
+                hr
                 button#v-pills-home-tab.nav-link.active(data-bs-toggle='pill', data-bs-target='#v-pills-home', type='button', role='tab', aria-controls='v-pills-home', aria-selected='true') Dairy
                 hr
                 button#v-pills-messages-tab.nav-link(data-bs-toggle='pill', data-bs-target='#v-pills-messages', type='button', role='tab', aria-controls='v-pills-messages', aria-selected='false') Horticultural
                 hr
                 button#v-pills-settings-tab.nav-link(data-bs-toggle='pill', data-bs-target='#v-pills-settings', type='button', role='tab', aria-controls='v-pills-settings', aria-selected='false') Poultry
                 hr
+                br
+                br
+                h6 Shop by Supplier
+                hr
+                button#mypill.nav-link(data-bs-toggle='pill', data-bs-target='#', type='button', role='tab', aria-controls='v-pills-home', aria-selected='true') AINO & Sons Enterprise
+                hr
+                button#mypill.nav-link(data-bs-toggle='pill', data-bs-target='#', type='button', role='tab', aria-controls='v-pills-messages', aria-selected='false') Albo Agro Exports Limited
+                hr
+                button#mypill.nav-link(data-bs-toggle='pill', data-bs-target='#', type='button', role='tab', aria-controls='v-pills-settings', aria-selected='false') Ba Yozefu Family Business
+                hr
+                button#mypill.nav-link(data-bs-toggle='pill', data-bs-target='#', type='button', role='tab', aria-controls='v-pills-home', aria-selected='true') Busi Limited
+                hr
+                button#mypill.nav-link(data-bs-toggle='pill', data-bs-target='#', type='button', role='tab', aria-controls='v-pills-messages', aria-selected='false') DAMARK Agribusiness Ventures
+                hr
+                button#mypill.nav-link(data-bs-toggle='pill', data-bs-target='#', type='button', role='tab', aria-controls='v-pills-settings', aria-selected='false') EMAMA Limited
+                hr
+
           .col-md-9
               #v-pills-tabContent.tab-content
                 #v-pills-home.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='v-pills-home-tab', tabindex='0') 
@@ -166,3 +187,4 @@ html(lang='en')
                   td.table2-cell Copyright &copy; 2022 Ufarm Masajja Agro Culture Limited
     //- JavaScript Bundle with Popper
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', integrity='sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa', crossorigin='anonymous')
+    //- script(src='/js/validateform.js')

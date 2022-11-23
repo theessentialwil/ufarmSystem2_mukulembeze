@@ -5,9 +5,9 @@ block content
         .col-md-12.dash_title
           nav.navbar.navbar-expand-lg.bg-light
               .container-fluid
-                a.navbar-brand(href='/index' target='_blank')
+                a.navbar-brand(href='/indexdash' target='_blank')
                   img.img2(src='/images/logo.png')
-                  a.nav-link.active(aria-current='page', href='/index' target="_blank") Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  a.nav-link.active(aria-current='page', href='/indexdash' target="_blank") Home &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 #navbarSupportedContent.collapse.navbar-collapse
                   ul.navbar-nav.me-auto.mb-2.mb-lg-0
                     li.nav-item
@@ -18,7 +18,7 @@ block content
         .col-md-3.dash_left 
           br
           br
-          img(src='/images/apple-tree.jpg')
+          //- img(src='/images/apple-tree.jpg')
         .col-md-9.dash_right
           ul#myTab.nav.nav-tabs(role='tablist')
             li.nav-item.tab(role='presentation')
@@ -30,7 +30,7 @@ block content
             li.nav-item.tab(role='presentation')
               button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') 💰 Sales
             li.nav-item.tab(role='presentation')
-              button#disabled-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#disabled-tab-pane', type='button', role='tab', aria-controls='disabled-tab-pane', aria-selected='false') ⏳ My Business
+              button#mybusiness-tab.nav-link.button(data-bs-toggle='tab', data-bs-target='#mybusiness-tab-pane', type='button', role='tab', aria-controls='mybusiness-tab-pane', aria-selected='false') ⏳ My Business
           #myTabContent.tab-content
             #home-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='home-tab', tabindex='0')
               .div-in-tab
@@ -109,38 +109,70 @@ block content
             #contact-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='contact-tab', tabindex='0')
               .div-in-tab
                 br
-                //- table.table.table-bordered 
-                //-     thead
-                //-         tr
-                //-             th Category 
-                //-             th Name
-                //-             th Ward
-                //-             th Image
-                //-             th Availability
-                //-             th Units
-                //-             th Change Availability
-                //-     tbody
-                //-         if wardApprovedGoods.length
-                //-             each item in wardApprovedGoods
-                //-                 if item.status == "Approved"
-                //-                     tr
-                //-                         td #{item.productcategory}
-                //-                         td #{item.productname}
-                //-                         td #{item.ward}
-                //-                         td 
-                //-                             div.imgdivs
-                //-                                 img(src="/"+item.productimage, alt="Image" width='150px' height="150px") 
-                //-                         td #{item.availability}
-                //-                         td #{item.stockbalance}
-                //-                         td
-                //-                             a#report-btn-approve(href='/produce/approve/'+item._id) Reverse Approve
-                //-                         td
-                //-                             form(method="post" action='/produce/delete')
-                //-                                 input(type="hidden" placeholder="" name="id", value=item._id)
+                table.table.table-bordered 
+                    thead
+                        tr
+                            th Order date 
+                            th Order No.
+                            th Product
+                            th Quantity
+                            th Price
+                            th Supplier
+                            th Client Name
+                                th Contact
+                    tbody
+                        if orders.length
+                            each ordereditem in orders
+                                if ordereditem.orderstatus == "Pending"
+                                    tr
+                                        td #{ordereditem.orderdate}
+                                        td #{ordereditem.orderno}
+                                        td #{ordereditem.productname}
+                                        td #{ordereditem.quantity}
+                                        td #{ordereditem.unitprice}
+                                        td #{ordereditem.supplierbizname}
+                                        td #{ordereditem.firstname}
+                                        td #{ordereditem.phonenum}
+                                        td
+                                            a#report-btn-approve(href='/produce/orderstatus/'+ordereditem._id) Edit Status
+                                        //- td
+                                        //-     form(method="post" action='/produce/delete')
+                                        //-         input(type="hidden" placeholder="" name="id", value=ordereditem._id)
             #disabled-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='disabled-tab', tabindex='0')
               .div-in-tab
-                <p>Network connection unusually slow. Sorry this may take a couple of days!
-                .loader
+                br
+                table.table.table-bordered 
+                    thead
+                        tr
+                            th Order Status
+                            th Order date 
+                            th Order No.
+                            th Product
+                            th Quantity
+                            th Price
+                            th Supplier
+                            th Client Name
+                                th Contact
+                    tbody
+                        if ordersDelivered.length
+                            each ordereditem in ordersDelivered
+                                if ordereditem.orderstatus == "Delivered"
+                                    tr
+                                        td #{ordereditem.orderstatus}
+                                        td #{ordereditem.orderdate}
+                                        td #{ordereditem.orderno}
+                                        td #{ordereditem.productname}
+                                        td #{ordereditem.quantity}
+                                        td #{ordereditem.unitprice}
+                                        td #{ordereditem.supplierbizname}
+                                        td #{ordereditem.firstname}
+                                        td #{ordereditem.phonenum}
+                                        td
+                                            a#report-btn-approve(href='/produce/orderstatus/'+ordereditem._id) Edit Status
+            #mybusiness-tab-pane.tab-pane.fade(role='tabpanel', aria-labelledby='mybusiness-tab', tabindex='0')
+                  .div-in-tab
+                    <p>Network connection unusually slow. Sorry this may take a couple of days!
+                    .loader
         br
         br
         hr
